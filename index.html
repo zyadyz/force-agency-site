@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PRIME AGENCE — Agence Social Media & Marketing Digital</title>
+  <meta name="description" content="PRIME transforme votre business en machine à clients. Social media, pub, contenu — on gère tout pour vous."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fafaf9;
+      --dark: #0c0a09;
+      --dark2: #0a0a0a;
+      --muted: #78716c;
+      --muted2: #57534e;
+      --border: rgba(0,0,0,0.08);
+      --white: #ffffff;
+      --green: #25d366;
+      --green-hover: #22c55e;
+      --font-head: 'Outfit', sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-italic: 'Instrument Serif', Georgia, serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* GRAIN OVERLAY */
+    .grain-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.025;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ════ SECTION LABEL BADGE ════ */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 100px;
+      padding: 6px 14px 6px 10px;
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 24px;
+    }
+    .badge::before {
+      content: '';
+      display: block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--dark);
+      flex-shrink: 0;
+    }
+    .badge-center { display: flex; justify-content: center; }
+    .badge-center .badge { }
+
+    /* ════ NAV ════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(250,250,249,0.9);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    }
+    .nav-logo svg { height: 22px; width: auto; }
+    .nav-logo svg path { fill: var(--dark); }
+    .nav-links-desktop {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-links-desktop a {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      padding: 8px 14px;
+      border-radius: 100px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links-desktop a:hover { color: var(--dark); background: rgba(0,0,0,0.04); }
+    .nav-ctas {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-nav-ghost {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--dark);
+      padding: 10px 20px;
+      border-radius: 100px;
+      border: 1px solid rgba(0,0,0,0.14);
+      transition: border-color 0.2s;
+      white-space: nowrap;
+    }
+    .btn-nav-ghost:hover { border-color: rgba(0,0,0,0.3); }
+    .btn-nav-dark {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--dark);
+      padding: 10px 22px;
+      border-radius: 100px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-nav-dark:hover { background: #1c1917; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      cursor: pointer;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; }
+
+    /* ════ MOBILE MENU ════ */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 200;
+      flex-direction: column;
+      padding: 80px 32px 40px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-close {
+      position: absolute;
+      top: 18px; right: 20px;
+      width: 40px; height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+    .mobile-links { list-style: none; }
+    .mobile-links li { border-bottom: 1px solid var(--border); }
+    .mobile-links a {
+      display: block;
+      padding: 20px 0;
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.8rem;
+      letter-spacing: -0.02em;
+      color: var(--dark);
+    }
+    .mobile-ctas { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+    .mobile-btn-dark {
+      display: flex; align-items: center; justify-content: center;
+      background: var(--dark); color: var(--white);
+      font-weight: 600; font-size: 0.9rem;
+      padding: 16px; border-radius: 100px;
+    }
+
+    /* ════ HERO ════ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      padding: 160px 80px 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-watermark {
+      position: absolute;
+      top: 42%; right: -2%;
+      transform: translateY(-50%);
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(140px, 24vw, 400px);
+      letter-spacing: -0.04em;
+      color: rgba(0,0,0,0.05);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      z-index: 0;
+      line-height: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+    }
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--muted2);
+    }
+    .hero-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(52px, 8.5vw, 120px);
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted2);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 460px;
+    }
+    .hero-sub .italic-accent {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 1.05rem;
+    }
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 72px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--dark);
+      padding: 16px 32px;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #1c1917; transform: scale(1.02); }
+    .btn-outline {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--dark);
+      border: 1px solid rgba(0,0,0,0.16);
+      padding: 16px 28px;
+      border-radius: 100px;
+      transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: rgba(0,0,0,0.35); }
+    .hero-stats {
+      display: flex;
+      align-items: stretch;
+      background: var(--dark);
+      border-radius: 20px;
+      overflow: hidden;
+      max-width: 680px;
+    }
+    .hero-stat {
+      flex: 1;
+      padding: 26px 20px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+      color: var(--white);
+      letter-spacing: -0.03em;
+      display: block;
+    }
+    .hero-stat-label {
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      display: block;
+      margin-top: 5px;
+    }
+
+    /* ════ LOGOS / MARQUEE ════ */
+    .logos-section {
+      background: var(--dark2);
+      padding: 40px 0 48px;
+      overflow: hidden;
+    }
+    .logos-label {
+      text-align: center;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 36px;
+    }
+    .marquee-row { overflow: hidden; position: relative; padding: 10px 0; }
+    .marquee-row::before,
+    .marquee-row::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 100px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .marquee-row::before { left: 0; background: linear-gradient(to right, var(--dark2), transparent); }
+    .marquee-row::after  { right: 0; background: linear-gradient(to left, var(--dark2), transparent); }
+    .marquee-track {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      width: max-content;
+      animation: marq 30s linear infinite;
+    }
+    .marquee-track.rev { animation-direction: reverse; animation-duration: 25s; }
+    @keyframes marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.5;
+      transition: opacity 0.3s;
+      flex-shrink: 0;
+    }
+    .logo-img:hover { opacity: 1; }
+
+    /* ════ SERVICES ════ */
+    .section-padding { padding: 120px 80px; }
+    .section-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(38px, 5.5vw, 78px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    .section-title .italic-accent {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1em;
+      letter-spacing: -0.02em;
+    }
+    .section-sub {
+      font-size: 0.95rem;
+      color: var(--muted2);
+      line-height: 1.7;
+      max-width: 420px;
+    }
+    .services-header { margin-bottom: 48px; }
+    .services-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 0; }
+    .service-tabs { display: flex; flex-direction: column; gap: 0; }
+    .service-tab {
+      border-bottom: 1px solid var(--border);
+    }
+    .service-tab-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      cursor: pointer;
+      user-select: none;
+    }
+    .service-tab-head-left { display: flex; align-items: center; gap: 20px; }
+    .service-tab-num {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .service-tab-name {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(1.15rem, 2.2vw, 1.7rem);
+      letter-spacing: -0.02em;
+      color: var(--dark);
+      transition: color 0.2s;
+    }
+    .service-tab:hover .service-tab-name { color: var(--muted2); }
+    .service-tab-icon {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s, transform 0.3s, border-color 0.25s;
+      flex-shrink: 0;
+    }
+    .service-tab-icon svg { width: 12px; height: 12px; transition: transform 0.3s; }
+    .service-tab.active .service-tab-icon {
+      background: var(--dark);
+      border-color: var(--dark);
+      transform: rotate(45deg);
+    }
+    .service-tab.active .service-tab-icon svg path { stroke: white; }
+    /* Service card (open state) */
+    .service-card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+    .service-tab.active .service-card-body { max-height: 600px; }
+    .service-card {
+      background: #f3f3f1;
+      border-radius: 20px;
+      padding: 36px 40px;
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+    }
+    .service-card-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .service-card-icon img,
+    .service-card-icon svg { width: 28px; height: 28px; }
+    .service-card-num {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .service-card-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      letter-spacing: -0.03em;
+      color: var(--dark);
+      margin-bottom: 14px;
+    }
+    .service-card-desc {
+      font-size: 0.9rem;
+      color: var(--muted2);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      max-width: 400px;
+    }
+    .service-card-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .service-card-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--dark);
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 100px;
+      padding: 5px 14px;
+    }
+    .service-card-right { text-align: right; flex-shrink: 0; }
+    .service-card-metric {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      letter-spacing: -0.04em;
+      color: var(--dark);
+      display: block;
+    }
+    .service-card-metric-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-top: 4px;
+    }
+    .service-card-imgs {
+      display: flex;
+      gap: -12px;
+      margin-top: 16px;
+      justify-content: flex-end;
+    }
+    .service-card-img {
+      width: 80px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-left: -16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      transform: rotate(var(--r, 0deg));
+    }
+    .service-card-img:first-child { margin-left: 0; --r: -8deg; }
+    .service-card-img:nth-child(2) { --r: 0deg; }
+    .service-card-img:nth-child(3) { --r: 8deg; }
+    .service-img-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 64px);
+      grid-template-rows: repeat(3, 64px);
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .service-img-grid img {
+      width: 64px; height: 64px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* ════ RESULTS ════ */
+    #results { background: var(--bg); }
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 56px;
+    }
+    .result-card {
+      border-radius: 20px;
+      padding: 44px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .result-card.dark {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .result-card.dark::before {
+      content: 'PRIME';
+      position: absolute;
+      bottom: -20px; right: -20px;
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 5rem;
+      letter-spacing: -0.04em;
+      color: rgba(255,255,255,0.06);
+      pointer-events: none;
+      user-select: none;
+    }
+    .result-card.light {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.07);
+    }
+    .result-metric-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .result-card.dark .result-metric-label { color: rgba(255,255,255,0.4); }
+    .result-card.light .result-metric-label { color: var(--muted); }
+    .result-counter {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+    .result-card.dark .result-counter { color: var(--white); }
+    .result-card.light .result-counter { color: var(--dark); }
+    .result-quote {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 0.88rem;
+      line-height: 1.8;
+      flex: 1;
+      margin-bottom: 28px;
+    }
+    .result-card.dark .result-quote { color: rgba(255,255,255,0.65); }
+    .result-card.light .result-quote { color: var(--muted2); }
+    .result-author { display: flex; align-items: center; justify-content: space-between; }
+    .result-author-left { display: flex; align-items: center; gap: 12px; }
+    .result-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .result-card.dark .result-avatar { background: rgba(255,255,255,0.12); color: var(--white); }
+    .result-card.light .result-avatar { background: var(--dark); color: var(--white); }
+    .result-author-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .result-author-role { font-size: 0.72rem; margin-top: 2px; }
+    .result-card.dark .result-author-name { color: var(--white); }
+    .result-card.dark .result-author-role { color: rgba(255,255,255,0.4); }
+    .result-card.light .result-author-name { color: var(--dark); }
+    .result-card.light .result-author-role { color: var(--muted); }
+    .result-stars {
+      display: flex;
+      gap: 3px;
+    }
+    .result-star { color: #f59e0b; font-size: 0.85rem; }
+
+    /* ════ INTEGRATIONS ════ */
+    .integrations-bg {
+      background: var(--dark2);
+      padding: 100px 0;
+      overflow: hidden;
+    }
+    .integrations-header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 80px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 48px;
+      margin-bottom: 60px;
+    }
+    .integrations-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(38px, 5.5vw, 72px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--white);
+    }
+    .integrations-sub {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.7;
+      max-width: 340px;
+    }
+    .int-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      padding: 6px 14px 6px 10px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 20px;
+    }
+    .int-badge::before {
+      content: '';
+      display: block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+    }
+    .int-marquee-row { overflow: hidden; position: relative; padding: 12px 0; }
+    .int-marquee-row::before,
+    .int-marquee-row::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 2;
+    }
+    .int-marquee-row::before { left: 0; background: linear-gradient(to right, var(--dark2), transparent); }
+    .int-marquee-row::after  { right: 0; background: linear-gradient(to left, var(--dark2), transparent); }
+    .int-track {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      width: max-content;
+      animation: marq 22s linear infinite;
+    }
+    .int-track.rev { animation-direction: reverse; animation-duration: 28s; }
+    .int-item {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.25);
+      padding: 0 28px;
+      white-space: nowrap;
+      transition: color 0.3s;
+    }
+    .int-item:hover { color: rgba(255,255,255,0.7); }
+    .int-sep {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+    .int-stats {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      margin-top: 60px;
+      padding: 0 80px;
+    }
+    .int-stat { text-align: center; }
+    .int-stat-num {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 2.4rem;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      display: block;
+    }
+    .int-stat-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-top: 6px;
+      display: block;
+    }
+
+    /* ════ PROCESS ════ */
+    #process { background: var(--bg); }
+    .process-header { text-align: center; margin-bottom: 80px; }
+    .process-header .badge { justify-content: center; }
+    .process-header .section-sub { margin: 0 auto; text-align: center; }
+    .process-timeline {
+      max-width: 780px;
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      left: 18px; top: 24px; bottom: 24px;
+      width: 1px;
+      background: rgba(0,0,0,0.1);
+      z-index: 0;
+    }
+    .process-step {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+    }
+    .process-dot {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 2px solid var(--dark);
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .process-dot-inner {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--dark);
+    }
+    .process-card {
+      flex: 1;
+      border-radius: 20px;
+      padding: 36px 40px;
+    }
+    .process-card.light { background: var(--white); border: 1px solid rgba(0,0,0,0.07); }
+    .process-card.dark { background: var(--dark); }
+    .process-step-num {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+    }
+    .process-card.light .process-step-num { color: rgba(0,0,0,0.2); }
+    .process-card.dark .process-step-num { color: rgba(255,255,255,0.2); }
+    .process-step-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
+      margin: 8px 0 14px;
+    }
+    .process-card.light .process-step-title { color: var(--dark); }
+    .process-card.dark .process-step-title { color: var(--white); }
+    .process-step-desc {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .process-card.light .process-step-desc { color: var(--muted2); }
+    .process-card.dark .process-step-desc { color: rgba(255,255,255,0.5); }
+    .process-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .process-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+    .process-card.light .process-tag {
+      background: var(--bg);
+      color: var(--dark);
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .process-card.dark .process-tag {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ════ CONTACT ════ */
+    #contact { background: var(--bg); padding: 120px 80px; }
+    .contact-wrapper {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 28px;
+      padding: 64px 60px;
+      box-shadow: 0 4px 60px rgba(0,0,0,0.07);
+    }
+    .contact-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+      letter-spacing: -0.04em;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .contact-sub {
+      font-size: 0.92rem;
+      color: var(--muted2);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .contact-fields {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .contact-or-inline {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .contact-input {
+      flex: 1;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--dark);
+      background: #f3f3f1;
+      border: 1px solid transparent;
+      border-radius: 100px;
+      padding: 15px 20px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-input::placeholder { color: rgba(0,0,0,0.3); }
+    .contact-input:focus { border-color: rgba(0,0,0,0.2); background: var(--white); }
+    .btn-contact-submit {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--white);
+      background: var(--dark);
+      border-radius: 100px;
+      padding: 18px;
+      margin-bottom: 10px;
+      transition: background 0.2s;
+    }
+    .btn-contact-submit:hover { background: #1c1917; }
+    .contact-note {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .contact-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .contact-divider-line { flex: 1; height: 1px; background: var(--border); }
+    .contact-divider-text { font-size: 0.75rem; color: var(--muted); }
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: #25d366;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 700;
+      border-radius: 100px;
+      padding: 18px;
+      margin-bottom: 28px;
+      transition: background 0.2s;
+    }
+    .btn-whatsapp:hover { background: #22c55e; }
+    .btn-whatsapp svg { width: 20px; height: 20px; fill: white; }
+    .contact-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .contact-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .contact-feature-check {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .contact-feature-check svg { width: 10px; height: 10px; }
+    .contact-feature-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--dark);
+      display: block;
+    }
+    .contact-feature-sub {
+      font-size: 0.7rem;
+      color: var(--muted);
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* ════ FOOTER ════ */
+    footer {
+      background: var(--dark2);
+      padding: 80px 40px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .footer-watermark {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(100px, 22vw, 340px);
+      letter-spacing: -0.04em;
+      color: rgba(255,255,255,0.04);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+    .footer-content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+    .footer-logo { display: inline-block; margin-bottom: 16px; }
+    .footer-logo svg { height: 26px; width: auto; }
+    .footer-logo svg path { fill: var(--white); }
+    .footer-tagline {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 28px;
+    }
+    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin-bottom: 28px; }
+    .footer-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      list-style: none;
+      margin-bottom: 28px;
+    }
+    .footer-nav a {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--white); }
+    .footer-instagram {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.5);
+      transition: border-color 0.2s, color 0.2s;
+      margin-bottom: 28px;
+    }
+    .footer-instagram:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
+    .footer-instagram svg { width: 18px; height: 18px; }
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ════ FADE ANIMATION ════ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+    }
+    .fade-in.d1 { transition-delay: 0.1s; }
+    .fade-in.d2 { transition-delay: 0.2s; }
+    .fade-in.d3 { transition-delay: 0.3s; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ════ TOAST ════ */
+    #toast {
+      position: fixed;
+      bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--dark); color: var(--white);
+      font-size: 0.82rem; font-weight: 600;
+      padding: 14px 28px; border-radius: 100px;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+      z-index: 1000; pointer-events: none;
+      white-space: nowrap;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ════ RESPONSIVE ════ */
+    @media (max-width: 900px) {
+      nav { padding: 14px 20px; }
+      .nav-links-desktop, .btn-nav-ghost { display: none; }
+      .hamburger { display: flex; }
+      #hero { padding: 110px 20px 60px; }
+      .hero-stats { max-width: 100%; flex-direction: column; border-radius: 16px; }
+      .hero-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .hero-stat:last-child { border-bottom: none; }
+      .section-padding { padding: 80px 20px; }
+      #contact { padding: 80px 20px; }
+      .contact-wrapper { padding: 40px 24px; border-radius: 20px; }
+      .contact-fields { flex-direction: column; }
+      .contact-or-inline { display: none; }
+      .results-grid { grid-template-columns: 1fr; }
+      .service-card { grid-template-columns: 1fr; }
+      .service-card-right { text-align: left; }
+      .integrations-header { flex-direction: column; align-items: flex-start; padding: 0 20px; margin-bottom: 40px; }
+      .int-stats { gap: 40px; padding: 0 20px; }
+      .process-timeline::before { display: none; }
+      .process-step { flex-direction: column; gap: 12px; }
+      .process-dot { display: none; }
+      .contact-features { grid-template-columns: 1fr; gap: 12px; }
+      .footer-nav { gap: 20px; flex-wrap: wrap; }
+      .footer { padding: 60px 20px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="grain-overlay"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobile()">✕</button>
+  <ul class="mobile-links">
+    <li><a href="#services" onclick="closeMobile()">Services</a></li>
+    <li><a href="#results" onclick="closeMobile()">Résultats</a></li>
+    <li><a href="#process" onclick="closeMobile()">Process</a></li>
+    <li><a href="#contact" onclick="closeMobile()">Contact</a></li>
+  </ul>
+  <div class="mobile-ctas">
+    <a href="#" class="btn-nav-ghost" style="text-align:center;padding:16px;">Espace Membre</a>
+    <a href="#contact" class="mobile-btn-dark" onclick="closeMobile()">Démarrer un projet</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 1152 250" fill="none">
+      <path d="M0.0011371 1.20015C0.667804 3.20015 76.4011 103.733 76.8011 103.333C77.0678 103.067 79.0678 92.8002 81.2011 80.5335C83.3345 68.1335 85.4678 56.9335 85.8678 55.6002C86.5345 53.3335 89.8678 53.2002 145.468 53.6002C210.801 54.0002 209.468 53.8668 216.001 62.9335C220.268 69.0668 220.401 87.3335 216.134 95.3335C212.268 102.533 205.734 108.533 197.734 112.267C191.201 115.333 190.401 115.333 133.468 115.733L75.7345 116.133L75.0678 119.067C73.4678 126.133 53.0678 244 53.0678 246.533C53.0678 249.333 53.4678 249.333 83.4678 249.333H113.868L121.068 208.667L128.401 168H154.401C186.401 168 199.334 166.533 216.001 160.8C232.934 155.067 242.001 149.467 254.268 137.333C270.668 121.067 279.334 102.933 282.401 78.0002C287.468 37.6002 268.134 10.6668 228.534 2.53348C217.201 0.266816 208.668 0.000149757 108.001 0.000149757C46.4011 0.000149757 -0.26553 0.533483 0.0011371 1.20015Z" fill="currentColor"/>
+      <path d="M319.734 0.533483C319.734 0.933483 311.334 48.6668 301.068 106.933C290.668 165.067 281.068 219.6 279.601 228C278.134 236.4 276.668 244.667 276.401 246.4L275.734 249.333L306.668 249.067L337.734 248.667L345.734 204L353.734 159.333H381.068C411.734 159.467 416.001 160.267 422.268 167.333C428.268 174.267 429.734 183.6 427.868 204.667C426.268 224 426.001 236.8 427.201 244.267L428.134 249.333H460.001H492.001L490.801 244.933C489.734 240.667 489.734 232.667 490.668 185.333C491.068 162.533 490.801 160.267 488.268 154.533C484.268 146 478.001 139.333 471.468 136.667L465.868 134.533L475.868 129.733C500.668 117.733 516.934 90.2668 517.068 60.4002C517.068 29.0668 499.868 9.60015 466.001 2.53348C454.934 0.266816 447.334 0.000149757 386.801 0.000149757C349.868 0.000149757 319.734 0.266816 319.734 0.533483ZM443.468 54.0002C449.868 57.8668 453.068 64.8002 453.068 75.0668C453.068 86.1335 447.468 98.0002 439.868 103.2C430.401 109.733 424.668 110.667 392.134 110.667C375.868 110.667 362.401 110.4 362.401 110C362.401 108.933 371.601 57.3335 372.401 53.6002L373.201 50.5335L406.134 50.9335C436.268 51.3335 439.468 51.6002 443.468 54.0002Z" fill="currentColor"/>
+      <path d="M557.736 2.93348C557.469 4.66682 555.602 14.6668 553.869 25.3335C547.602 61.4668 515.736 243.333 515.069 246.267L514.402 249.333H544.936C572.936 249.333 575.602 249.2 576.269 246.933C576.669 245.733 579.069 232 581.736 216.667C584.402 201.2 590.402 166.8 595.069 140C599.736 113.2 606.936 72.1335 611.069 48.6668C615.202 25.2002 618.936 4.66682 619.336 2.93348L620.002 0.000149757H589.202H558.402L557.736 2.93348Z" fill="currentColor"/>
+      <path d="M650.401 1.60015C650.401 2.53348 646.534 25.4668 641.734 52.6668C620.401 174.133 607.734 247.067 607.734 248.133C607.734 248.933 620.268 249.2 637.334 249.067L666.934 248.667L670.668 227.333C672.534 215.6 679.334 176 685.601 139.333C691.734 102.667 696.934 73.3335 696.934 74.1335C697.468 82.8002 706.801 150.667 713.468 194L721.868 248.667L747.201 249.067L772.534 249.333L801.734 190.4C833.068 126.933 856.134 79.6002 857.601 75.4668C859.734 69.4668 859.201 75.2002 856.268 90.6668C850.668 119.2 827.734 245.6 827.734 247.467C827.734 249.067 832.668 249.333 857.334 249.067L887.068 248.667L888.801 239.333C889.734 234.133 894.268 207.733 899.068 180.667C903.734 153.467 912.801 102.533 919.068 67.3335C925.334 32.1335 930.401 2.66682 930.401 1.73348C930.401 0.40015 920.668 0.000149757 885.068 0.000149757H839.734L834.534 10.9335C831.734 17.0668 822.401 36.6668 813.734 54.6668C787.068 110.533 775.601 134.8 768.934 149.867L762.668 164.267L761.868 158.533C761.468 155.333 759.868 142.8 758.401 130.667C756.134 113.333 748.001 52.2668 741.734 5.60015L740.934 0.000149757H695.601C660.401 0.000149757 650.401 0.40015 650.401 1.60015Z" fill="currentColor"/>
+      <path d="M961.202 8.93349C957.735 28.8002 922.402 229.333 920.669 238.267C919.602 243.6 919.069 248.267 919.469 248.667C919.869 249.067 962.669 249.333 1014.54 249.333H1108.94L1110.27 242.267C1114.14 222.4 1118.4 198.8 1118.4 196.933C1118.4 194.8 1113.07 194.667 1054.4 194.667C1019.2 194.667 990.402 194.4 990.402 194C990.402 193.6 992.269 183.333 994.402 171.067C996.669 158.933 998.402 148.4 998.402 147.867C998.402 147.2 1023.74 146.667 1054.8 146.667H1111.2L1115.47 122.933C1117.87 110 1119.74 98.9335 1119.74 98.2668C1119.74 97.7335 1094.54 97.3335 1063.74 97.3335C1019.87 97.3335 1007.74 96.9335 1007.74 95.6002C1007.74 94.8002 1009.34 84.8002 1011.34 73.7335L1015.07 53.3335H1078.67H1142.27L1143.6 46.2668C1145.47 37.6001 1151.74 2.40015 1151.74 0.933487C1151.74 0.400154 1109.2 0.000152588 1057.2 0.000152588H962.669L961.202 8.93349Z" fill="currentColor"/>
+    </svg>
+  </a>
+  <ul class="nav-links-desktop">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#results">Résultats</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-ctas">
+    <a href="#" class="btn-nav-ghost">Espace Membre</a>
+    <a href="#contact" class="btn-nav-dark">Démarrer</a>
+  </div>
+  <button class="hamburger" onclick="openMobile()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-watermark">PRIME</div>
+  <div class="hero-content">
+    <p class="hero-eyebrow fade-in">Prime Agence</p>
+    <h1 class="hero-title fade-in d1">ON FAIT<br>GRANDIR<br>VOTRE BUSINESS</h1>
+    <p class="hero-sub fade-in d2">
+      PRIME transforme votre business en <span class="italic-accent">machine à clients</span>.<br>
+      Social media, pub, contenu — on gère tout pour vous.
+    </p>
+    <div class="hero-ctas fade-in d3">
+      <a href="#contact" class="btn-primary">Booster mon business</a>
+      <a href="#results" class="btn-outline">Voir les résultats</a>
+    </div>
+    <div class="hero-stats fade-in d3">
+      <div class="hero-stat">
+        <span class="hero-stat-num">+340%</span>
+        <span class="hero-stat-label">Visibilité</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">200+</span>
+        <span class="hero-stat-label">Marques</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">+1Md+</span>
+        <span class="hero-stat-label">Vues générées</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">98%</span>
+        <span class="hero-stat-label">Satisfaction</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos-section">
+  <p class="logos-label">200+ marques accompagnées</p>
+  <div class="marquee-row" style="margin-bottom:16px;">
+    <div class="marquee-track">
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/gladalle.png" alt="G LA DALLE"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/100crousti.png" alt="100% CROUSTI"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/djadel-show.png" alt="DJADEL SHOW"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/pubg.png" alt="PUBG MOBILE"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/owari.png" alt="OWARI"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/dbc.png" alt="DBC STORE"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/bng-immo.png" alt="BNG IMMO"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/hmi-house.png" alt="HMI HOUSE"/>
+      <!-- duplicate -->
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/gladalle.png" alt="G LA DALLE"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/100crousti.png" alt="100% CROUSTI"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/djadel-show.png" alt="DJADEL SHOW"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/pubg.png" alt="PUBG MOBILE"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/owari.png" alt="OWARI"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/dbc.png" alt="DBC STORE"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/bng-immo.png" alt="BNG IMMO"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/hmi-house.png" alt="HMI HOUSE"/>
+    </div>
+  </div>
+  <div class="marquee-row">
+    <div class="marquee-track rev">
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/paalm.png" alt="PAALM"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/black-and-white.png" alt="BLACK & WHITE"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/velodrome.png" alt="ORANGE VELODROME"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/scene-musicale.png" alt="SCENE MUSICALE"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/uniikon.png" alt="UNIIKON"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/la-fouine.png" alt="LA FOUINE"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/bodys.png" alt="BODYS"/>
+      <!-- duplicate -->
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/paalm.png" alt="PAALM"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/black-and-white.png" alt="BLACK & WHITE"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/velodrome.png" alt="ORANGE VELODROME"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/scene-musicale.png" alt="SCENE MUSICALE"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/uniikon.png" alt="UNIIKON"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/la-fouine.png" alt="LA FOUINE"/>
+      <img class="logo-img" src="https://www.prime-agence.fr/images/logos/bodys.png" alt="BODYS"/>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section-padding" id="services">
+  <div class="services-header fade-in">
+    <div class="badge">Nos Services</div>
+    <h2 class="section-title">On s'occupe de <span class="italic-accent">tout</span></h2>
+    <p class="section-sub">Concentrez-vous sur votre métier. PRIME gère votre visibilité.</p>
+  </div>
+  <hr class="services-divider"/>
+  <div class="service-tabs">
+
+    <div class="service-tab active" onclick="toggleTab(this)">
+      <div class="service-tab-head">
+        <div class="service-tab-head-left">
+          <span class="service-tab-num">01</span>
+          <span class="service-tab-name">Social Media</span>
+        </div>
+        <div class="service-tab-icon">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card">
+          <div>
+            <div class="service-card-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0c0a09" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="#0c0a09" stroke="none"/></svg>
+            </div>
+            <div class="service-card-num">01</div>
+            <div class="service-card-title">Social Media</div>
+            <p class="service-card-desc">On gère vos Instagram, TikTok, Facebook. Contenu, publications, interactions — votre audience grandit pendant que vous travaillez.</p>
+            <div class="service-card-tags">
+              <span class="service-card-tag">Instagram</span>
+              <span class="service-card-tag">TikTok</span>
+              <span class="service-card-tag">Community</span>
+            </div>
+          </div>
+          <div class="service-card-right">
+            <span class="service-card-metric">+340%</span>
+            <span class="service-card-metric-label">Engagement moyen</span>
+            <div class="service-card-imgs">
+              <img class="service-card-img" src="https://www.prime-agence.fr/images/flyers/frame-6.jpg" alt=""/>
+              <img class="service-card-img" src="https://www.prime-agence.fr/images/flyers/frame-7.jpg" alt=""/>
+              <img class="service-card-img" src="https://www.prime-agence.fr/images/flyers/frame-18.jpg" alt=""/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-tab" onclick="toggleTab(this)">
+      <div class="service-tab-head">
+        <div class="service-tab-head-left">
+          <span class="service-tab-num">02</span>
+          <span class="service-tab-name">Publicité</span>
+        </div>
+        <div class="service-tab-icon">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card">
+          <div>
+            <div class="service-card-icon" style="background:#0c0a09;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3h18v18H3z" fill="white" opacity="0.1"/><path d="M9 9h6v6H9z" fill="white"/><path d="M3 9h6M15 9h6M3 15h6M15 15h6M9 3v6M9 15v6M15 3v6M15 15v6" stroke="white" stroke-width="1.5"/></svg>
+            </div>
+            <div class="service-card-num">02</div>
+            <div class="service-card-title">Publicité</div>
+            <p class="service-card-desc">Meta Ads, TikTok Ads, Google Ads — on amène des clients directement dans votre salon, votre boutique, votre site.</p>
+            <div class="service-card-tags">
+              <span class="service-card-tag">Meta Ads</span>
+              <span class="service-card-tag">Google Ads</span>
+              <span class="service-card-tag">Retargeting</span>
+            </div>
+          </div>
+          <div class="service-card-right">
+            <span class="service-card-metric">5.2x</span>
+            <span class="service-card-metric-label">ROAS moyen</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-tab" onclick="toggleTab(this)">
+      <div class="service-tab-head">
+        <div class="service-tab-head-left">
+          <span class="service-tab-num">03</span>
+          <span class="service-tab-name">Contenu</span>
+        </div>
+        <div class="service-tab-icon">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card">
+          <div>
+            <div class="service-card-num">03</div>
+            <div class="service-card-title">Contenu</div>
+            <p class="service-card-desc">Vidéos, photos, Reels, TikToks — du contenu pro qui arrête le scroll et attire de nouveaux clients.</p>
+            <div class="service-card-tags">
+              <span class="service-card-tag">UGC</span>
+              <span class="service-card-tag">Reels</span>
+              <span class="service-card-tag">Production</span>
+            </div>
+          </div>
+          <div class="service-card-right">
+            <span class="service-card-metric">+1Md</span>
+            <span class="service-card-metric-label">Vues générées</span>
+            <div class="service-img-grid" style="margin-top:16px;">
+              <img src="https://www.prime-agence.fr/images/contenu/tiktok.png" alt="TikTok"/>
+              <img src="https://www.prime-agence.fr/images/contenu/instagram.png" alt="Instagram"/>
+              <img src="https://www.prime-agence.fr/images/contenu/youtube.jpg" alt="YouTube"/>
+              <img src="https://www.prime-agence.fr/images/contenu/ugc.jpeg" alt="UGC"/>
+              <img src="https://www.prime-agence.fr/images/contenu/reels.jpg" alt="Reels"/>
+              <img src="https://www.prime-agence.fr/images/contenu/shorts.png" alt="Shorts"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-tab" onclick="toggleTab(this)">
+      <div class="service-tab-head">
+        <div class="service-tab-head-left">
+          <span class="service-tab-num">04</span>
+          <span class="service-tab-name">Site & Marque</span>
+        </div>
+        <div class="service-tab-icon">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card">
+          <div>
+            <div class="service-card-num">04</div>
+            <div class="service-card-title">Site & Marque</div>
+            <p class="service-card-desc">Votre site internet professionnel + identité visuelle complète. Vos clients vous trouvent et vous font confiance.</p>
+            <div class="service-card-tags">
+              <span class="service-card-tag">Web Design</span>
+              <span class="service-card-tag">Branding</span>
+              <span class="service-card-tag">SEO Local</span>
+            </div>
+          </div>
+          <div class="service-card-right">
+            <span class="service-card-metric">+180%</span>
+            <span class="service-card-metric-label">Leads en plus</span>
+            <div class="service-img-grid" style="margin-top:16px;">
+              <img src="https://www.prime-agence.fr/images/tech/shopify.png" alt="Shopify"/>
+              <img src="https://www.prime-agence.fr/images/tech/wordpress.png" alt="WordPress"/>
+              <img src="https://www.prime-agence.fr/images/tech/react.png" alt="React"/>
+              <img src="https://www.prime-agence.fr/images/tech/html.png" alt="HTML5"/>
+              <img src="https://www.prime-agence.fr/images/tech/css.png" alt="CSS3"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-tab" onclick="toggleTab(this)">
+      <div class="service-tab-head">
+        <div class="service-tab-head-left">
+          <span class="service-tab-num">05</span>
+          <span class="service-tab-name">Influence & UGC</span>
+        </div>
+        <div class="service-tab-icon">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card">
+          <div>
+            <div class="service-card-num">05</div>
+            <div class="service-card-title">Influence & UGC</div>
+            <p class="service-card-desc">On connecte votre marque avec les bons créateurs. Contenu authentique qui convertit, partenariats qui font parler.</p>
+            <div class="service-card-tags">
+              <span class="service-card-tag">Influenceurs</span>
+              <span class="service-card-tag">UGC</span>
+              <span class="service-card-tag">Collaborations</span>
+            </div>
+          </div>
+          <div class="service-card-right">
+            <span class="service-card-metric">x3</span>
+            <span class="service-card-metric-label">Taux de conversion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section-padding" id="results">
+  <div class="fade-in">
+    <div class="badge">Résultats</div>
+    <h2 class="section-title">Des résultats <span class="italic-accent">concrets</span></h2>
+  </div>
+  <div class="results-grid">
+    <div class="result-card dark fade-in">
+      <div class="result-metric-label">Chiffre d'affaires</div>
+      <div class="result-counter" data-target="2" data-prefix="x">x2</div>
+      <p class="result-quote">"PRIME m'ont appelé, ils m'ont proposé une stratégie marketing en ligne et de là ils m'ont accompagné sur tout. J'ai quasiment doublé mon chiffre d'affaires."</p>
+      <div class="result-author">
+        <div class="result-author-left">
+          <div class="result-avatar">K</div>
+          <div>
+            <span class="result-author-name">Karim D.</span>
+            <div class="result-author-role">Restaurateur</div>
+          </div>
+        </div>
+        <div class="result-stars">
+          <span class="result-star">★</span><span class="result-star">★</span><span class="result-star">★</span><span class="result-star">★</span><span class="result-star">★</span>
+        </div>
+      </div>
+    </div>
+    <div class="result-card light fade-in d1">
+      <div class="result-metric-label">Nouveaux clients</div>
+      <div class="result-counter" data-target="340" data-prefix="+" data-suffix="%">+340%</div>
+      <p class="result-quote">"J'avais même pas de page Instagram pour le salon. Les gars de PRIME ont tout géré de A à Z et maintenant j'ai des clients qui viennent de villes à côté juste parce qu'ils m'ont vu sur TikTok."</p>
+      <div class="result-author">
+        <div class="result-author-left">
+          <div class="result-avatar">S</div>
+          <div>
+            <span class="result-author-name">Samira B.</span>
+            <div class="result-author-role">Salon de beauté</div>
+          </div>
+        </div>
+        <div class="result-stars">
+          <span class="result-star">★</span><span class="result-star">★</span><span class="result-star">★</span><span class="result-star">★</span><span class="result-star">★</span>
+        </div>
+      </div>
+    </div>
+    <div class="result-card light fade-in d1">
+      <div class="result-metric-label">Appels entrants</div>
+      <div class="result-counter" data-target="3" data-prefix="x">x3</div>
+      <p class="result-quote">"Ça faisait 10 ans que je faisais que du bouche-à-oreille. Ils ont lancé les pubs, le site, les réseaux et là le téléphone il a pas arrêté de sonner."</p>
+      <div class="result-author">
+        <div class="result-author-left">
+          <div class="result-avatar">M</div>
+          <div>
+            <span class="result-author-name">Mohamed R.</span>
+            <div class="result-author-role">Artisan plombier</div>
+          </div>
+        </div>
+        <div class="result-stars">
+          <span class="result-star">★</span><span class="result-star">★</span><span class="result-star">★</span><span class="result-star">★</span><span class="result-star">★</span>
+        </div>
+      </div>
+    </div>
+    <div class="result-card dark fade-in d2">
+      <div class="result-metric-label">Réservations</div>
+      <div class="result-counter" data-target="180" data-prefix="+" data-suffix="%">+180%</div>
+      <p class="result-quote">"PRIME m'ont fait un site, des vidéos, des pubs ciblées et maintenant j'ai des gens qui traversent la ville pour venir manger chez nous. Ils répondent direct quand t'as une question."</p>
+      <div class="result-author">
+        <div class="result-author-left">
+          <div class="result-avatar">Y</div>
+          <div>
+            <span class="result-author-name">Yassine A.</span>
+            <div class="result-author-role">Gérant de restaurant</div>
+          </div>
+        </div>
+        <div class="result-stars">
+          <span class="result-star">★</span><span class="result-star">★</span><span class="result-star">★</span><span class="result-star">★</span><span class="result-star">★</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<div class="integrations-bg">
+  <div class="integrations-header">
+    <div>
+      <div class="int-badge">Intégrations</div>
+      <h2 class="integrations-title">On se connecte<br>à tout</h2>
+    </div>
+    <p class="integrations-sub">Vos outils préférés, connectés à votre écosystème. Paiements, CRM, booking, analytics — tout communique.</p>
+  </div>
+  <div class="int-marquee-row">
+    <div class="int-track">
+      <span class="int-item">Stripe</span><span class="int-sep"></span>
+      <span class="int-item">Shopify</span><span class="int-sep"></span>
+      <span class="int-item">PayPal</span><span class="int-sep"></span>
+      <span class="int-item">Calendly</span><span class="int-sep"></span>
+      <span class="int-item">Planity</span><span class="int-sep"></span>
+      <span class="int-item">Wix</span><span class="int-sep"></span>
+      <span class="int-item">HubSpot</span><span class="int-sep"></span>
+      <span class="int-item">Mailchimp</span><span class="int-sep"></span>
+      <span class="int-item">Stripe</span><span class="int-sep"></span>
+      <span class="int-item">Shopify</span><span class="int-sep"></span>
+      <span class="int-item">PayPal</span><span class="int-sep"></span>
+      <span class="int-item">Calendly</span><span class="int-sep"></span>
+      <span class="int-item">Planity</span><span class="int-sep"></span>
+      <span class="int-item">Wix</span><span class="int-sep"></span>
+      <span class="int-item">HubSpot</span><span class="int-sep"></span>
+      <span class="int-item">Mailchimp</span><span class="int-sep"></span>
+    </div>
+  </div>
+  <div class="int-marquee-row">
+    <div class="int-track rev">
+      <span class="int-item">Zapier</span><span class="int-sep"></span>
+      <span class="int-item">Slack</span><span class="int-sep"></span>
+      <span class="int-item">Notion</span><span class="int-sep"></span>
+      <span class="int-item">Google Analytics</span><span class="int-sep"></span>
+      <span class="int-item">Klaviyo</span><span class="int-sep"></span>
+      <span class="int-item">Monday.com</span><span class="int-sep"></span>
+      <span class="int-item">GoHighLevel</span><span class="int-sep"></span>
+      <span class="int-item">Squarespace</span><span class="int-sep"></span>
+      <span class="int-item">Zapier</span><span class="int-sep"></span>
+      <span class="int-item">Slack</span><span class="int-sep"></span>
+      <span class="int-item">Notion</span><span class="int-sep"></span>
+      <span class="int-item">Google Analytics</span><span class="int-sep"></span>
+      <span class="int-item">Klaviyo</span><span class="int-sep"></span>
+      <span class="int-item">Monday.com</span><span class="int-sep"></span>
+      <span class="int-item">GoHighLevel</span><span class="int-sep"></span>
+      <span class="int-item">Squarespace</span><span class="int-sep"></span>
+    </div>
+  </div>
+  <div class="int-marquee-row">
+    <div class="int-track">
+      <span class="int-item">Square</span><span class="int-sep"></span>
+      <span class="int-item">Doctolib</span><span class="int-sep"></span>
+      <span class="int-item">Salesforce</span><span class="int-sep"></span>
+      <span class="int-item">Pipedrive</span><span class="int-sep"></span>
+      <span class="int-item">ActiveCampaign</span><span class="int-sep"></span>
+      <span class="int-item">Typeform</span><span class="int-sep"></span>
+      <span class="int-item">Hootsuite</span><span class="int-sep"></span>
+      <span class="int-item">Sprout Social</span><span class="int-sep"></span>
+      <span class="int-item">Square</span><span class="int-sep"></span>
+      <span class="int-item">Doctolib</span><span class="int-sep"></span>
+      <span class="int-item">Salesforce</span><span class="int-sep"></span>
+      <span class="int-item">Pipedrive</span><span class="int-sep"></span>
+      <span class="int-item">ActiveCampaign</span><span class="int-sep"></span>
+      <span class="int-item">Typeform</span><span class="int-sep"></span>
+      <span class="int-item">Hootsuite</span><span class="int-sep"></span>
+      <span class="int-item">Sprout Social</span><span class="int-sep"></span>
+    </div>
+  </div>
+  <div class="int-stats">
+    <div class="int-stat"><span class="int-stat-num">30+</span><span class="int-stat-label">Intégrations</span></div>
+    <div class="int-stat"><span class="int-stat-num">24h</span><span class="int-stat-label">Setup complet</span></div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section class="section-padding" id="process">
+  <div class="process-header fade-in">
+    <div class="badge">Notre Process</div>
+    <h2 class="section-title">Comment on travaille</h2>
+    <p class="section-sub">Simple, rapide et transparent. On vous accompagne de A à Z.</p>
+  </div>
+  <div class="process-timeline">
+    <div class="process-step fade-in">
+      <div class="process-dot"><div class="process-dot-inner"></div></div>
+      <div class="process-card light">
+        <div class="process-step-num">01</div>
+        <div class="process-step-title">Audit Gratuit</div>
+        <p class="process-step-desc">On analyse votre présence en ligne, vos concurrents et vos opportunités. Vous recevez un plan d'action clair avec des objectifs concrets pour votre business.</p>
+        <div class="process-tags">
+          <span class="process-tag">Analyse complète</span>
+          <span class="process-tag">Plan d'action</span>
+          <span class="process-tag">Objectifs concrets</span>
+        </div>
+      </div>
+    </div>
+    <div class="process-step fade-in d1">
+      <div class="process-dot"><div class="process-dot-inner"></div></div>
+      <div class="process-card dark">
+        <div class="process-step-num">02</div>
+        <div class="process-step-title">Mise en place</div>
+        <p class="process-step-desc">Campagnes, contenu, site — on s'occupe de tout. Vous avez un interlocuteur dédié qui vous accompagne et vous explique chaque étape en toute transparence.</p>
+        <div class="process-tags">
+          <span class="process-tag">Tout est géré</span>
+          <span class="process-tag">Interlocuteur dédié</span>
+          <span class="process-tag">Suivi en temps réel</span>
+        </div>
+      </div>
+    </div>
+    <div class="process-step fade-in d2">
+      <div class="process-dot"><div class="process-dot-inner"></div></div>
+      <div class="process-card light">
+        <div class="process-step-num">03</div>
+        <div class="process-step-title">Résultats & Croissance</div>
+        <p class="process-step-desc">Les premiers résultats arrivent, on optimise ce qui marche et on accélère. Vous suivez tout depuis votre dashboard et on reste disponible à tout moment.</p>
+        <div class="process-tags">
+          <span class="process-tag">Résultats mesurables</span>
+          <span class="process-tag">Optimisation continue</span>
+          <span class="process-tag">Disponibilité totale</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrapper fade-in">
+    <div class="badge">Contact</div>
+    <h2 class="contact-title">Prêt à grandir?</h2>
+    <p class="contact-sub">Prenez RDV avec l'équipe PRIME. Audit gratuit, plan d'action concret en 30 min.</p>
+    <form onsubmit="handleContact(event)">
+      <div class="contact-fields">
+        <input type="email" class="contact-input" placeholder="votre@email.com" required/>
+        <span class="contact-or-inline">ou</span>
+        <input type="tel" class="contact-input" placeholder="06 12 34 56 78"/>
+      </div>
+      <button type="submit" class="btn-contact-submit">Recevoir mon audit gratuit</button>
+    </form>
+    <p class="contact-note">Aucun engagement. On vous recontacte pour planifier votre audit.</p>
+    <div class="contact-divider">
+      <div class="contact-divider-line"></div>
+      <span class="contact-divider-text">ou</span>
+      <div class="contact-divider-line"></div>
+    </div>
+    <a href="https://wa.me/33600000000" class="btn-whatsapp">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Écrire sur WhatsApp
+    </a>
+    <div class="contact-features">
+      <div class="contact-feature">
+        <div class="contact-feature-check">
+          <svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#0c0a09" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <span class="contact-feature-title">Audit gratuit</span>
+          <span class="contact-feature-sub">Analyse complète</span>
+        </div>
+      </div>
+      <div class="contact-feature">
+        <div class="contact-feature-check">
+          <svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#0c0a09" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <span class="contact-feature-title">Plan d'action</span>
+          <span class="contact-feature-sub">Stratégie personnalisée</span>
+        </div>
+      </div>
+      <div class="contact-feature">
+        <div class="contact-feature-check">
+          <svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#0c0a09" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <span class="contact-feature-title">Sans engagement</span>
+          <span class="contact-feature-sub">Résultats ou rien</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-watermark">PRIME</div>
+  <div class="footer-content">
+    <a href="#" class="footer-logo">
+      <svg viewBox="0 0 1152 250" fill="none">
+        <path d="M0.0011371 1.20015C0.667804 3.20015 76.4011 103.733 76.8011 103.333C77.0678 103.067 79.0678 92.8002 81.2011 80.5335C83.3345 68.1335 85.4678 56.9335 85.8678 55.6002C86.5345 53.3335 89.8678 53.2002 145.468 53.6002C210.801 54.0002 209.468 53.8668 216.001 62.9335C220.268 69.0668 220.401 87.3335 216.134 95.3335C212.268 102.533 205.734 108.533 197.734 112.267C191.201 115.333 190.401 115.333 133.468 115.733L75.7345 116.133L75.0678 119.067C73.4678 126.133 53.0678 244 53.0678 246.533C53.0678 249.333 53.4678 249.333 83.4678 249.333H113.868L121.068 208.667L128.401 168H154.401C186.401 168 199.334 166.533 216.001 160.8C232.934 155.067 242.001 149.467 254.268 137.333C270.668 121.067 279.334 102.933 282.401 78.0002C287.468 37.6002 268.134 10.6668 228.534 2.53348C217.201 0.266816 208.668 0.000149757 108.001 0.000149757C46.4011 0.000149757 -0.26553 0.533483 0.0011371 1.20015Z" fill="currentColor"/>
+        <path d="M319.734 0.533483C319.734 0.933483 311.334 48.6668 301.068 106.933C290.668 165.067 281.068 219.6 279.601 228C278.134 236.4 276.668 244.667 276.401 246.4L275.734 249.333L306.668 249.067L337.734 248.667L345.734 204L353.734 159.333H381.068C411.734 159.467 416.001 160.267 422.268 167.333C428.268 174.267 429.734 183.6 427.868 204.667C426.268 224 426.001 236.8 427.201 244.267L428.134 249.333H460.001H492.001L490.801 244.933C489.734 240.667 489.734 232.667 490.668 185.333C491.068 162.533 490.801 160.267 488.268 154.533C484.268 146 478.001 139.333 471.468 136.667L465.868 134.533L475.868 129.733C500.668 117.733 516.934 90.2668 517.068 60.4002C517.068 29.0668 499.868 9.60015 466.001 2.53348C454.934 0.266816 447.334 0.000149757 386.801 0.000149757C349.868 0.000149757 319.734 0.266816 319.734 0.533483ZM443.468 54.0002C449.868 57.8668 453.068 64.8002 453.068 75.0668C453.068 86.1335 447.468 98.0002 439.868 103.2C430.401 109.733 424.668 110.667 392.134 110.667C375.868 110.667 362.401 110.4 362.401 110C362.401 108.933 371.601 57.3335 372.401 53.6002L373.201 50.5335L406.134 50.9335C436.268 51.3335 439.468 51.6002 443.468 54.0002Z" fill="currentColor"/>
+        <path d="M557.736 2.93348C557.469 4.66682 555.602 14.6668 553.869 25.3335C547.602 61.4668 515.736 243.333 515.069 246.267L514.402 249.333H544.936C572.936 249.333 575.602 249.2 576.269 246.933C576.669 245.733 579.069 232 581.736 216.667C584.402 201.2 590.402 166.8 595.069 140C599.736 113.2 606.936 72.1335 611.069 48.6668C615.202 25.2002 618.936 4.66682 619.336 2.93348L620.002 0.000149757H589.202H558.402L557.736 2.93348Z" fill="currentColor"/>
+        <path d="M650.401 1.60015C650.401 2.53348 646.534 25.4668 641.734 52.6668C620.401 174.133 607.734 247.067 607.734 248.133C607.734 248.933 620.268 249.2 637.334 249.067L666.934 248.667L670.668 227.333C672.534 215.6 679.334 176 685.601 139.333C691.734 102.667 696.934 73.3335 696.934 74.1335C697.468 82.8002 706.801 150.667 713.468 194L721.868 248.667L747.201 249.067L772.534 249.333L801.734 190.4C833.068 126.933 856.134 79.6002 857.601 75.4668C859.734 69.4668 859.201 75.2002 856.268 90.6668C850.668 119.2 827.734 245.6 827.734 247.467C827.734 249.067 832.668 249.333 857.334 249.067L887.068 248.667L888.801 239.333C889.734 234.133 894.268 207.733 899.068 180.667C903.734 153.467 912.801 102.533 919.068 67.3335C925.334 32.1335 930.401 2.66682 930.401 1.73348C930.401 0.40015 920.668 0.000149757 885.068 0.000149757H839.734L834.534 10.9335C831.734 17.0668 822.401 36.6668 813.734 54.6668C787.068 110.533 775.601 134.8 768.934 149.867L762.668 164.267L761.868 158.533C761.468 155.333 759.868 142.8 758.401 130.667C756.134 113.333 748.001 52.2668 741.734 5.60015L740.934 0.000149757H695.601C660.401 0.000149757 650.401 0.40015 650.401 1.60015Z" fill="currentColor"/>
+        <path d="M961.202 8.93349C957.735 28.8002 922.402 229.333 920.669 238.267C919.602 243.6 919.069 248.267 919.469 248.667C919.869 249.067 962.669 249.333 1014.54 249.333H1108.94L1110.27 242.267C1114.14 222.4 1118.4 198.8 1118.4 196.933C1118.4 194.8 1113.07 194.667 1054.4 194.667C1019.2 194.667 990.402 194.4 990.402 194C990.402 193.6 992.269 183.333 994.402 171.067C996.669 158.933 998.402 148.4 998.402 147.867C998.402 147.2 1023.74 146.667 1054.8 146.667H1111.2L1115.47 122.933C1117.87 110 1119.74 98.9335 1119.74 98.2668C1119.74 97.7335 1094.54 97.3335 1063.74 97.3335C1019.87 97.3335 1007.74 96.9335 1007.74 95.6002C1007.74 94.8002 1009.34 84.8002 1011.34 73.7335L1015.07 53.3335H1078.67H1142.27L1143.6 46.2668C1145.47 37.6001 1151.74 2.40015 1151.74 0.933487C1151.74 0.400154 1109.2 0.000152588 1057.2 0.000152588H962.669L961.202 8.93349Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <p class="footer-tagline">L'excellence digitale, simplement.</p>
+    <hr class="footer-divider"/>
+    <ul class="footer-nav">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#results">Résultats</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#" class="footer-instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="5"/>
+        <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <hr class="footer-divider"/>
+    <p class="footer-copy">© 2026 PRIME AGENCE. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<div id="toast">✓ Demande envoyée — on vous recontacte bientôt</div>
+
+<script>
+  /* ── NAV SCROLL ── */
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  }, { passive: true });
+
+  /* ── MOBILE MENU ── */
+  function openMobile() { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow=''; }
+
+  /* ── SERVICE TABS ── */
+  function toggleTab(el) {
+    const isActive = el.classList.contains('active');
+    document.querySelectorAll('.service-tab').forEach(t => t.classList.remove('active'));
+    if (!isActive) el.classList.add('active');
+  }
+
+  /* ── FADE IN OBSERVER ── */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0, rootMargin: '0px 0px 60px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+  // Trigger hero immediately
+  document.querySelectorAll('#hero .fade-in').forEach(el => el.classList.add('visible'));
+  // Fallback: make everything visible after 2s in case observer misses
+  setTimeout(() => { document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible')); }, 2000);
+
+  /* ── COUNTER ANIMATION ── */
+  const counterIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.target) || 0;
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const dur = 1400;
+      const start = performance.now();
+      const tick = now => {
+        const p = Math.min((now - start) / dur, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        el.textContent = prefix + Math.round(ease * target) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      counterIO.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.result-counter').forEach(el => counterIO.observe(el));
+
+  /* ── CONTACT FORM ── */
+  function handleContact(e) {
+    e.preventDefault();
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3500);
+  }
+</script>
+</body>
+</html>
