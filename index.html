@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PRIME AGENCE — Agence Social Media & Marketing Digital</title>
-  <meta name="description" content="PRIME transforme votre business en machine à clients. Social media, pub, contenu — on gère tout pour vous."/>
+  <title>FORCE AGENCY — Agence Social Media & Marketing Digital</title>
+  <meta name="description" content="FORCE transforme votre business en machine à clients. Social media, pub, contenu — on gère tout pour vous."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Cormorant+Garamond:ital,wght@1,700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -85,7 +85,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+      background: rgba(250,250,249,0.9);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
     }
     nav.scrolled {
       background: rgba(250,250,249,0.9);
@@ -93,8 +96,8 @@
       -webkit-backdrop-filter: blur(20px) saturate(180%);
       box-shadow: 0 1px 0 rgba(0,0,0,0.06);
     }
-    .nav-logo svg { height: 22px; width: auto; }
-    .nav-logo svg path { fill: var(--dark); }
+    .nav-logo img { height: 42px; width: auto; }
+    .nav-left { display: flex; align-items: center; gap: 48px; position: absolute; left: 50%; transform: translateX(-50%); }
     .nav-links-desktop {
       display: flex;
       align-items: center;
@@ -116,6 +119,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      margin-left: auto;
     }
     .btn-nav-ghost {
       font-size: 0.82rem;
@@ -141,12 +145,32 @@
     .btn-nav-dark:hover { background: #1c1917; }
     .hamburger {
       display: none;
+      align-items: center;
+      justify-content: center;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.10);
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      cursor: pointer;
       flex-direction: column;
       gap: 5px;
-      padding: 8px;
-      cursor: pointer;
+      transition: box-shadow 0.2s, transform 0.2s;
     }
-    .hamburger span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; }
+    .hamburger:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.12); transform: scale(1.04); }
+    .hamburger span {
+      display: block;
+      width: 16px;
+      height: 1.5px;
+      background: var(--dark);
+      border-radius: 4px;
+      transform-origin: center;
+      transition: transform 0.35s cubic-bezier(.77,0,.18,1), opacity 0.25s, width 0.35s;
+    }
+    .hamburger span:nth-child(2) { width: 10px; align-self: flex-start; margin-left: 12px; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); width: 16px; }
+    .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); width: 16px; }
 
     /* ════ MOBILE MENU ════ */
     .mobile-menu {
@@ -290,29 +314,57 @@
       transition: border-color 0.2s;
     }
     .btn-outline:hover { border-color: rgba(0,0,0,0.35); }
-    .hero-stats {
-      display: flex;
-      align-items: stretch;
-      background: var(--dark);
+    /* ════ DRAW PANEL ════ */
+    .draw-panel {
+      background: #0d0d0d;
       border-radius: 20px;
       overflow: hidden;
-      max-width: 680px;
+      max-width: 420px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.07);
     }
-    .hero-stat {
-      flex: 1;
-      padding: 26px 20px;
-      text-align: center;
-      border-right: 1px solid rgba(255,255,255,0.08);
+    .dp-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: #161616;
     }
-    .hero-stat:last-child { border-right: none; }
-    .hero-stat-num {
-      font-family: var(--font-head);
-      font-weight: 800;
-      font-size: clamp(1.3rem, 2.2vw, 1.9rem);
-      color: var(--white);
-      letter-spacing: -0.03em;
-      display: block;
+    .dp-dots { display: flex; gap: 5px; }
+    .dp-dots span { width: 10px; height: 10px; border-radius: 50%; }
+    .dp-dots span:nth-child(1) { background: #ff5f57; }
+    .dp-dots span:nth-child(2) { background: #febc2e; }
+    .dp-dots span:nth-child(3) { background: #28c840; }
+    .dp-title { font-size: 0.7rem; color: rgba(255,255,255,0.35); font-weight: 500; letter-spacing: 0.05em; flex: 1; text-align: center; }
+    .dp-live { display: flex; align-items: center; gap: 5px; font-size: 0.65rem; color: #E7C375; font-weight: 600; }
+    .dp-pulse { width: 6px; height: 6px; border-radius: 50%; background: #E7C375; animation: dpPulse 1.5s ease-in-out infinite; }
+    @keyframes dpPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(0.6)} }
+    @keyframes dpBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .dp-stage {
+      position: relative; min-height: 225px;
+      display: flex; align-items: center; justify-content: center;
+      padding: 18px 20px;
     }
+    .dp-scene {
+      position: absolute; opacity: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.5s ease; width: 100%;
+    }
+    .dp-scene.active { opacity: 1; }
+    .dp-scene svg { max-height: 215px; width: auto; }
+    .dp-el {
+      fill: none; stroke: #E7C375;
+      stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+      stroke-dasharray: 100; stroke-dashoffset: 100;
+      transition: stroke-dashoffset 0.55s cubic-bezier(.4,0,.2,1);
+    }
+    .dp-el.dim { stroke: rgba(231,195,117,0.32); }
+    .dp-el.thick { stroke-width: 2.5; }
+    .dp-el.drawn { stroke-dashoffset: 0; }
+    .dp-footer {
+      padding: 10px 18px 14px; border-top: 1px solid rgba(255,255,255,0.06);
+      background: #161616; display: flex; align-items: center; gap: 3px; min-height: 40px;
+    }
+    .dp-label-text { font-size: 0.68rem; color: rgba(255,255,255,0.4); font-weight: 500; letter-spacing: 0.04em; font-family: 'Courier New', monospace; }
+    .dp-cursor { font-size: 0.8rem; color: #E7C375; animation: dpBlink 0.9s step-end infinite; }
     .hero-stat-label {
       font-size: 0.55rem;
       font-weight: 600;
@@ -375,11 +427,19 @@
     .section-title {
       font-family: var(--font-head);
       font-weight: 900;
-      font-size: clamp(38px, 5.5vw, 78px);
-      line-height: 0.95;
+      font-size: clamp(28px, 3.8vw, 58px);
+      line-height: 1.05;
       letter-spacing: -0.03em;
       color: var(--dark);
       margin-bottom: 16px;
+    }
+    .services-title { font-size: clamp(26px, 3.2vw, 52px); }
+    .gold-accent {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      color: #E7C375;
+      letter-spacing: -0.01em;
     }
     .section-title .italic-accent {
       font-family: var(--font-italic);
@@ -395,161 +455,145 @@
       max-width: 420px;
     }
     .services-header { margin-bottom: 48px; }
-    .services-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 0; }
-    .service-tabs { display: flex; flex-direction: column; gap: 0; }
-    .service-tab {
-      border-bottom: 1px solid var(--border);
-    }
-    .service-tab-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 22px 0;
-      cursor: pointer;
-      user-select: none;
-    }
-    .service-tab-head-left { display: flex; align-items: center; gap: 20px; }
-    .service-tab-num {
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-    }
-    .service-tab-name {
-      font-family: var(--font-head);
-      font-weight: 800;
-      font-size: clamp(1.15rem, 2.2vw, 1.7rem);
-      letter-spacing: -0.02em;
-      color: var(--dark);
-      transition: color 0.2s;
-    }
-    .service-tab:hover .service-tab-name { color: var(--muted2); }
-    .service-tab-icon {
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.25s, transform 0.3s, border-color 0.25s;
-      flex-shrink: 0;
-    }
-    .service-tab-icon svg { width: 12px; height: 12px; transition: transform 0.3s; }
-    .service-tab.active .service-tab-icon {
-      background: var(--dark);
-      border-color: var(--dark);
-      transform: rotate(45deg);
-    }
-    .service-tab.active .service-tab-icon svg path { stroke: white; }
-    /* Service card (open state) */
-    .service-card-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s cubic-bezier(0.16,1,0.3,1);
-    }
-    .service-tab.active .service-card-body { max-height: 600px; }
-    .service-card {
-      background: #f3f3f1;
+    .services-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 24px; }
+    /* ════ SERVICES CARDS ════ */
+    .services-cards { display: flex; flex-direction: column; gap: 12px; }
+    .svc-card {
       border-radius: 20px;
-      padding: 36px 40px;
-      margin-bottom: 20px;
+      padding: 40px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+    .svc-card.light { background: #f3f3f1; }
+    .svc-card.dark { background: #0c0a09; }
+    .svc-card-inner {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 40px;
-      align-items: center;
+      align-items: flex-start;
+      position: relative;
+      z-index: 1;
     }
-    .service-card-icon {
-      width: 52px; height: 52px;
-      border-radius: 14px;
-      background: var(--white);
+    .svc-card-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 16px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      margin-bottom: 14px;
+      flex-shrink: 0;
     }
-    .service-card-icon img,
-    .service-card-icon svg { width: 28px; height: 28px; }
-    .service-card-num {
+    .svc-card.light .svc-card-icon { background: white; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .svc-card.dark .svc-card-icon { background: rgba(255,255,255,0.08); }
+    .svc-card-icon svg { width: 26px; height: 26px; }
+    .svc-card-num {
       font-family: var(--font-head);
       font-weight: 800;
       font-size: 0.72rem;
       letter-spacing: 0.1em;
-      color: var(--muted);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
-    .service-card-title {
+    .svc-card.light .svc-card-num { color: var(--muted); }
+    .svc-card.dark .svc-card-num { color: rgba(255,255,255,0.35); }
+    .svc-card-title {
       font-family: var(--font-head);
       font-weight: 900;
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
       letter-spacing: -0.03em;
-      color: var(--dark);
+      line-height: 1;
       margin-bottom: 14px;
     }
-    .service-card-desc {
+    .svc-card.light .svc-card-title { color: var(--dark); }
+    .svc-card.dark .svc-card-title { color: white; }
+    .svc-card-desc {
       font-size: 0.9rem;
-      color: var(--muted2);
       line-height: 1.75;
       margin-bottom: 20px;
-      max-width: 400px;
+      max-width: 420px;
     }
-    .service-card-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-    .service-card-tag {
+    .svc-card.light .svc-card-desc { color: var(--muted2); }
+    .svc-card.dark .svc-card-desc { color: rgba(255,255,255,0.5); }
+    .svc-card-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .svc-card-tag {
       font-size: 0.7rem;
       font-weight: 500;
-      color: var(--dark);
-      background: var(--white);
-      border: 1px solid rgba(0,0,0,0.1);
       border-radius: 100px;
       padding: 5px 14px;
     }
-    .service-card-right { text-align: right; flex-shrink: 0; }
-    .service-card-metric {
+    .svc-card.light .svc-card-tag { color: var(--dark); background: white; border: 1px solid rgba(0,0,0,0.1); }
+    .svc-card.dark .svc-card-tag { color: white; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); }
+    .svc-card-right { text-align: right; flex-shrink: 0; min-width: 140px; }
+    .svc-card-metric {
       font-family: var(--font-head);
       font-weight: 900;
-      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      font-size: clamp(2.2rem, 5vw, 4rem);
       letter-spacing: -0.04em;
-      color: var(--dark);
+      line-height: 1;
       display: block;
     }
-    .service-card-metric-label {
+    .svc-card.light .svc-card-metric { color: var(--dark); }
+    .svc-card.dark .svc-card-metric { color: white; }
+    .svc-card-metric-label {
       font-size: 0.6rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--muted);
       display: block;
       margin-top: 4px;
     }
-    .service-card-imgs {
+    .svc-card.light .svc-card-metric-label { color: var(--muted); }
+    .svc-card.dark .svc-card-metric-label { color: rgba(255,255,255,0.4); }
+    .svc-card-imgs {
       display: flex;
-      gap: -12px;
+      margin-top: 24px;
+      justify-content: flex-end;
+    }
+    .svc-card-img {
+      width: 76px;
+      height: 114px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-left: -14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .svc-card-img:first-child { margin-left: 0; transform: rotate(-8deg); }
+    .svc-card-img:nth-child(2) { transform: rotate(0deg); }
+    .svc-card-img:nth-child(3) { transform: rotate(8deg); }
+    .svc-img-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 58px);
+      gap: 5px;
       margin-top: 16px;
       justify-content: flex-end;
     }
-    .service-card-img {
-      width: 80px;
-      height: 120px;
+    .svc-img-grid img {
+      width: 58px; height: 58px;
       object-fit: cover;
-      border-radius: 12px;
-      margin-left: -16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-      transform: rotate(var(--r, 0deg));
+      border-radius: 8px;
     }
-    .service-card-img:first-child { margin-left: 0; --r: -8deg; }
-    .service-card-img:nth-child(2) { --r: 0deg; }
-    .service-card-img:nth-child(3) { --r: 8deg; }
-    .service-img-grid {
+    .svc-watermark {
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(80px, 14vw, 180px);
+      letter-spacing: -0.04em;
+      color: rgba(255,255,255,0.04);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .svc-row-2 {
       display: grid;
-      grid-template-columns: repeat(3, 64px);
-      grid-template-rows: repeat(3, 64px);
-      gap: 6px;
-      margin-top: 12px;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
-    .service-img-grid img {
-      width: 64px; height: 64px;
-      object-fit: cover;
-      border-radius: 10px;
+    .svc-row-2 .svc-card-inner {
+      grid-template-columns: 1fr;
     }
+    .svc-row-2 .svc-card-right { text-align: left; }
+    .svc-row-2 .svc-img-grid { justify-content: flex-start; }
 
     /* ════ RESULTS ════ */
     #results { background: var(--bg); }
@@ -572,7 +616,7 @@
       overflow: hidden;
     }
     .result-card.dark::before {
-      content: 'PRIME';
+      content: 'FORCE';
       position: absolute;
       bottom: -20px; right: -20px;
       font-family: var(--font-head);
@@ -1002,8 +1046,7 @@
     }
     .footer-content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
     .footer-logo { display: inline-block; margin-bottom: 16px; }
-    .footer-logo svg { height: 26px; width: auto; }
-    .footer-logo svg path { fill: var(--white); }
+    .footer-logo img { height: 8px; width: auto; }
     .footer-tagline {
       font-family: var(--font-italic);
       font-style: italic;
@@ -1077,6 +1120,9 @@
       nav { padding: 14px 20px; }
       .nav-links-desktop, .btn-nav-ghost { display: none; }
       .hamburger { display: flex; }
+      .nav-left { position: static; transform: none; left: auto; gap: 0; }
+      .nav-logo img { height: 33px !important; }
+      .btn-nav-dark { display: none; }
       #hero { padding: 110px 20px 60px; }
       .hero-stats { max-width: 100%; flex-direction: column; border-radius: 16px; }
       .hero-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -1087,8 +1133,9 @@
       .contact-fields { flex-direction: column; }
       .contact-or-inline { display: none; }
       .results-grid { grid-template-columns: 1fr; }
-      .service-card { grid-template-columns: 1fr; }
-      .service-card-right { text-align: left; }
+      .svc-row-2 { grid-template-columns: 1fr; }
+      .svc-card-inner { grid-template-columns: 1fr; }
+      .svc-card-right { text-align: left; min-width: unset; }
       .integrations-header { flex-direction: column; align-items: flex-start; padding: 0 20px; margin-bottom: 40px; }
       .int-stats { gap: 40px; padding: 0 20px; }
       .process-timeline::before { display: none; }
@@ -1121,21 +1168,17 @@
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a href="#" class="nav-logo">
-    <svg viewBox="0 0 1152 250" fill="none">
-      <path d="M0.0011371 1.20015C0.667804 3.20015 76.4011 103.733 76.8011 103.333C77.0678 103.067 79.0678 92.8002 81.2011 80.5335C83.3345 68.1335 85.4678 56.9335 85.8678 55.6002C86.5345 53.3335 89.8678 53.2002 145.468 53.6002C210.801 54.0002 209.468 53.8668 216.001 62.9335C220.268 69.0668 220.401 87.3335 216.134 95.3335C212.268 102.533 205.734 108.533 197.734 112.267C191.201 115.333 190.401 115.333 133.468 115.733L75.7345 116.133L75.0678 119.067C73.4678 126.133 53.0678 244 53.0678 246.533C53.0678 249.333 53.4678 249.333 83.4678 249.333H113.868L121.068 208.667L128.401 168H154.401C186.401 168 199.334 166.533 216.001 160.8C232.934 155.067 242.001 149.467 254.268 137.333C270.668 121.067 279.334 102.933 282.401 78.0002C287.468 37.6002 268.134 10.6668 228.534 2.53348C217.201 0.266816 208.668 0.000149757 108.001 0.000149757C46.4011 0.000149757 -0.26553 0.533483 0.0011371 1.20015Z" fill="currentColor"/>
-      <path d="M319.734 0.533483C319.734 0.933483 311.334 48.6668 301.068 106.933C290.668 165.067 281.068 219.6 279.601 228C278.134 236.4 276.668 244.667 276.401 246.4L275.734 249.333L306.668 249.067L337.734 248.667L345.734 204L353.734 159.333H381.068C411.734 159.467 416.001 160.267 422.268 167.333C428.268 174.267 429.734 183.6 427.868 204.667C426.268 224 426.001 236.8 427.201 244.267L428.134 249.333H460.001H492.001L490.801 244.933C489.734 240.667 489.734 232.667 490.668 185.333C491.068 162.533 490.801 160.267 488.268 154.533C484.268 146 478.001 139.333 471.468 136.667L465.868 134.533L475.868 129.733C500.668 117.733 516.934 90.2668 517.068 60.4002C517.068 29.0668 499.868 9.60015 466.001 2.53348C454.934 0.266816 447.334 0.000149757 386.801 0.000149757C349.868 0.000149757 319.734 0.266816 319.734 0.533483ZM443.468 54.0002C449.868 57.8668 453.068 64.8002 453.068 75.0668C453.068 86.1335 447.468 98.0002 439.868 103.2C430.401 109.733 424.668 110.667 392.134 110.667C375.868 110.667 362.401 110.4 362.401 110C362.401 108.933 371.601 57.3335 372.401 53.6002L373.201 50.5335L406.134 50.9335C436.268 51.3335 439.468 51.6002 443.468 54.0002Z" fill="currentColor"/>
-      <path d="M557.736 2.93348C557.469 4.66682 555.602 14.6668 553.869 25.3335C547.602 61.4668 515.736 243.333 515.069 246.267L514.402 249.333H544.936C572.936 249.333 575.602 249.2 576.269 246.933C576.669 245.733 579.069 232 581.736 216.667C584.402 201.2 590.402 166.8 595.069 140C599.736 113.2 606.936 72.1335 611.069 48.6668C615.202 25.2002 618.936 4.66682 619.336 2.93348L620.002 0.000149757H589.202H558.402L557.736 2.93348Z" fill="currentColor"/>
-      <path d="M650.401 1.60015C650.401 2.53348 646.534 25.4668 641.734 52.6668C620.401 174.133 607.734 247.067 607.734 248.133C607.734 248.933 620.268 249.2 637.334 249.067L666.934 248.667L670.668 227.333C672.534 215.6 679.334 176 685.601 139.333C691.734 102.667 696.934 73.3335 696.934 74.1335C697.468 82.8002 706.801 150.667 713.468 194L721.868 248.667L747.201 249.067L772.534 249.333L801.734 190.4C833.068 126.933 856.134 79.6002 857.601 75.4668C859.734 69.4668 859.201 75.2002 856.268 90.6668C850.668 119.2 827.734 245.6 827.734 247.467C827.734 249.067 832.668 249.333 857.334 249.067L887.068 248.667L888.801 239.333C889.734 234.133 894.268 207.733 899.068 180.667C903.734 153.467 912.801 102.533 919.068 67.3335C925.334 32.1335 930.401 2.66682 930.401 1.73348C930.401 0.40015 920.668 0.000149757 885.068 0.000149757H839.734L834.534 10.9335C831.734 17.0668 822.401 36.6668 813.734 54.6668C787.068 110.533 775.601 134.8 768.934 149.867L762.668 164.267L761.868 158.533C761.468 155.333 759.868 142.8 758.401 130.667C756.134 113.333 748.001 52.2668 741.734 5.60015L740.934 0.000149757H695.601C660.401 0.000149757 650.401 0.40015 650.401 1.60015Z" fill="currentColor"/>
-      <path d="M961.202 8.93349C957.735 28.8002 922.402 229.333 920.669 238.267C919.602 243.6 919.069 248.267 919.469 248.667C919.869 249.067 962.669 249.333 1014.54 249.333H1108.94L1110.27 242.267C1114.14 222.4 1118.4 198.8 1118.4 196.933C1118.4 194.8 1113.07 194.667 1054.4 194.667C1019.2 194.667 990.402 194.4 990.402 194C990.402 193.6 992.269 183.333 994.402 171.067C996.669 158.933 998.402 148.4 998.402 147.867C998.402 147.2 1023.74 146.667 1054.8 146.667H1111.2L1115.47 122.933C1117.87 110 1119.74 98.9335 1119.74 98.2668C1119.74 97.7335 1094.54 97.3335 1063.74 97.3335C1019.87 97.3335 1007.74 96.9335 1007.74 95.6002C1007.74 94.8002 1009.34 84.8002 1011.34 73.7335L1015.07 53.3335H1078.67H1142.27L1143.6 46.2668C1145.47 37.6001 1151.74 2.40015 1151.74 0.933487C1151.74 0.400154 1109.2 0.000152588 1057.2 0.000152588H962.669L961.202 8.93349Z" fill="currentColor"/>
-    </svg>
-  </a>
-  <ul class="nav-links-desktop">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#results">Résultats</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="nav-left">
+    <a href="#" class="nav-logo">
+      <img src="logo.png" alt="Force Agency" style="height:42px;width:auto;display:block;">
+    </a>
+    <ul class="nav-links-desktop">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#results">Résultats</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
   <div class="nav-ctas">
     <a href="#" class="btn-nav-ghost">Espace Membre</a>
     <a href="#contact" class="btn-nav-dark">Démarrer</a>
@@ -1147,34 +1190,102 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-watermark">PRIME</div>
+  <div class="hero-watermark">FORCE</div>
   <div class="hero-content">
-    <p class="hero-eyebrow fade-in">Prime Agence</p>
-    <h1 class="hero-title fade-in d1">ON FAIT<br>GRANDIR<br>VOTRE BUSINESS</h1>
+    <p class="hero-eyebrow fade-in">Force Agency</p>
+    <img src="hero-title.png" alt="ON FAIT GRANDIR VOTRE BUSINESS" class="hero-title fade-in d1" style="width:700px;height:auto;display:block;margin-bottom:32px;">
     <p class="hero-sub fade-in d2">
-      PRIME transforme votre business en <span class="italic-accent">machine à clients</span>.<br>
+      FORCE transforme votre business en <span class="italic-accent">machine à clients</span>.<br>
       Social media, pub, contenu — on gère tout pour vous.
     </p>
     <div class="hero-ctas fade-in d3">
       <a href="#contact" class="btn-primary">Booster mon business</a>
       <a href="#results" class="btn-outline">Voir les résultats</a>
     </div>
-    <div class="hero-stats fade-in d3">
-      <div class="hero-stat">
-        <span class="hero-stat-num">+340%</span>
-        <span class="hero-stat-label">Visibilité</span>
+    <div class="draw-panel fade-in d3">
+      <div class="dp-header">
+        <div class="dp-dots"><span></span><span></span><span></span></div>
+        <span class="dp-title">Force Agency · Studio</span>
+        <span class="dp-live"><span class="dp-pulse"></span>En création</span>
       </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">200+</span>
-        <span class="hero-stat-label">Marques</span>
+      <div class="dp-stage">
+        <!-- Flyer Promotionnel -->
+        <div class="dp-scene" data-label="Flyer Promotionnel">
+          <svg viewBox="0 0 160 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect class="dp-el" x="15" y="5" width="130" height="205" rx="4" pathLength="100"/>
+            <rect class="dp-el dim" x="15" y="5" width="130" height="55" rx="4" pathLength="100"/>
+            <line class="dp-el thick" x1="28" y1="27" x2="128" y2="27" pathLength="100"/>
+            <line class="dp-el" x1="28" y1="39" x2="98" y2="39" pathLength="100"/>
+            <rect class="dp-el" x="25" y="68" width="110" height="75" rx="2" pathLength="100"/>
+            <line class="dp-el dim" x1="25" y1="68" x2="135" y2="143" pathLength="100"/>
+            <line class="dp-el dim" x1="135" y1="68" x2="25" y2="143" pathLength="100"/>
+            <line class="dp-el thick" x1="25" y1="157" x2="108" y2="157" pathLength="100"/>
+            <line class="dp-el" x1="25" y1="168" x2="135" y2="168" pathLength="100"/>
+            <line class="dp-el" x1="25" y1="178" x2="88" y2="178" pathLength="100"/>
+            <rect class="dp-el" x="38" y="191" width="84" height="14" rx="7" pathLength="100"/>
+          </svg>
+        </div>
+        <!-- Site Web Vitrine -->
+        <div class="dp-scene" data-label="Site Web Vitrine">
+          <svg viewBox="0 0 250 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect class="dp-el" x="5" y="5" width="240" height="165" rx="8" pathLength="100"/>
+            <line class="dp-el" x1="5" y1="33" x2="245" y2="33" pathLength="100"/>
+            <circle class="dp-el" cx="20" cy="19" r="5" pathLength="100"/>
+            <circle class="dp-el" cx="34" cy="19" r="5" pathLength="100"/>
+            <circle class="dp-el" cx="48" cy="19" r="5" pathLength="100"/>
+            <rect class="dp-el dim" x="68" y="11" width="114" height="16" rx="8" pathLength="100"/>
+            <rect class="dp-el dim" x="15" y="42" width="220" height="60" rx="3" pathLength="100"/>
+            <line class="dp-el thick" x1="25" y1="62" x2="130" y2="62" pathLength="100"/>
+            <line class="dp-el" x1="25" y1="74" x2="94" y2="74" pathLength="100"/>
+            <rect class="dp-el" x="25" y="85" width="50" height="11" rx="5" pathLength="100"/>
+            <rect class="dp-el" x="15" y="113" width="66" height="47" rx="3" pathLength="100"/>
+            <rect class="dp-el" x="92" y="113" width="66" height="47" rx="3" pathLength="100"/>
+            <rect class="dp-el" x="169" y="113" width="66" height="47" rx="3" pathLength="100"/>
+            <line class="dp-el dim" x1="22" y1="128" x2="72" y2="128" pathLength="100"/>
+            <line class="dp-el dim" x1="22" y1="138" x2="65" y2="138" pathLength="100"/>
+            <line class="dp-el dim" x1="99" y1="128" x2="149" y2="128" pathLength="100"/>
+            <line class="dp-el dim" x1="99" y1="138" x2="142" y2="138" pathLength="100"/>
+            <line class="dp-el dim" x1="176" y1="128" x2="226" y2="128" pathLength="100"/>
+            <line class="dp-el dim" x1="176" y1="138" x2="219" y2="138" pathLength="100"/>
+          </svg>
+        </div>
+        <!-- Pub Meta Ads -->
+        <div class="dp-scene" data-label="Pub Meta Ads">
+          <svg viewBox="0 0 160 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect class="dp-el" x="15" y="5" width="130" height="205" rx="18" pathLength="100"/>
+            <rect class="dp-el dim" x="24" y="22" width="112" height="175" pathLength="100"/>
+            <circle class="dp-el" cx="38" cy="38" r="8" pathLength="100"/>
+            <line class="dp-el" x1="52" y1="34" x2="105" y2="34" pathLength="100"/>
+            <line class="dp-el dim" x1="52" y1="43" x2="84" y2="43" pathLength="100"/>
+            <rect class="dp-el" x="24" y="54" width="112" height="95" pathLength="100"/>
+            <line class="dp-el thick" x1="36" y1="88" x2="124" y2="88" pathLength="100"/>
+            <line class="dp-el" x1="36" y1="100" x2="106" y2="100" pathLength="100"/>
+            <line class="dp-el dim" x1="36" y1="152" x2="120" y2="152" pathLength="100"/>
+            <rect class="dp-el" x="36" y="160" width="88" height="16" rx="8" pathLength="100"/>
+            <line class="dp-el" x1="68" y1="208" x2="92" y2="208" pathLength="100"/>
+          </svg>
+        </div>
+        <!-- Contenu TikTok -->
+        <div class="dp-scene" data-label="Contenu TikTok">
+          <svg viewBox="0 0 160 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect class="dp-el" x="15" y="5" width="130" height="205" rx="18" pathLength="100"/>
+            <rect class="dp-el dim" x="24" y="22" width="112" height="175" pathLength="100"/>
+            <polygon class="dp-el" points="68,88 68,125 106,107" pathLength="100"/>
+            <path class="dp-el" d="M115 55 C115 47 126 44 126 52 C130 44 141 47 141 55 C141 66 126 76 126 76 C126 76 115 66 115 55Z" pathLength="100"/>
+            <rect class="dp-el dim" x="116" y="82" width="24" height="20" rx="5" pathLength="100"/>
+            <path class="dp-el dim" d="M120 108 L140 101 M136 94 L140 101 L133 107" pathLength="100"/>
+            <circle class="dp-el" cx="128" cy="133" r="9" pathLength="100"/>
+            <circle class="dp-el" cx="128" cy="133" r="4" pathLength="100"/>
+            <line class="dp-el thick" x1="28" y1="170" x2="98" y2="170" pathLength="100"/>
+            <line class="dp-el dim" x1="28" y1="181" x2="112" y2="181" pathLength="100"/>
+            <line class="dp-el dim" x1="28" y1="190" x2="88" y2="190" pathLength="100"/>
+            <line class="dp-el" x1="60" y1="208" x2="100" y2="208" pathLength="100"/>
+          </svg>
+        </div>
       </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">+1Md+</span>
-        <span class="hero-stat-label">Vues générées</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">98%</span>
-        <span class="hero-stat-label">Satisfaction</span>
+      <div class="dp-footer">
+        <span class="dp-label-text"></span>
+        <span class="dp-cursor">|</span>
       </div>
     </div>
   </div>
@@ -1229,109 +1340,90 @@
 <section class="section-padding" id="services">
   <div class="services-header fade-in">
     <div class="badge">Nos Services</div>
-    <h2 class="section-title">On s'occupe de <span class="italic-accent">tout</span></h2>
-    <p class="section-sub">Concentrez-vous sur votre métier. PRIME gère votre visibilité.</p>
+    <h2 class="section-title services-title">Tout ce dont votre<br>business a besoin<br>pour passer au<br><span class="gold-accent">niveau supérieur.</span></h2>
+    <p class="section-sub">Concentrez-vous sur votre métier. FORCE gère votre visibilité.</p>
   </div>
   <hr class="services-divider"/>
-  <div class="service-tabs">
+  <div class="services-cards">
 
-    <div class="service-tab active" onclick="toggleTab(this)">
-      <div class="service-tab-head">
-        <div class="service-tab-head-left">
-          <span class="service-tab-num">01</span>
-          <span class="service-tab-name">Social Media</span>
-        </div>
-        <div class="service-tab-icon">
-          <svg viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-      </div>
-      <div class="service-card-body">
-        <div class="service-card">
-          <div>
-            <div class="service-card-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0c0a09" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="#0c0a09" stroke="none"/></svg>
-            </div>
-            <div class="service-card-num">01</div>
-            <div class="service-card-title">Social Media</div>
-            <p class="service-card-desc">On gère vos Instagram, TikTok, Facebook. Contenu, publications, interactions — votre audience grandit pendant que vous travaillez.</p>
-            <div class="service-card-tags">
-              <span class="service-card-tag">Instagram</span>
-              <span class="service-card-tag">TikTok</span>
-              <span class="service-card-tag">Community</span>
-            </div>
+    <!-- 01 + 02 side by side -->
+    <div class="svc-row-2">
+
+    <!-- 01 Social Media — light -->
+    <div class="svc-card light fade-in">
+      <div class="svc-card-inner">
+        <div>
+          <div class="svc-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0c0a09" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="#0c0a09" stroke="none"/></svg>
           </div>
-          <div class="service-card-right">
-            <span class="service-card-metric">+340%</span>
-            <span class="service-card-metric-label">Engagement moyen</span>
-            <div class="service-card-imgs">
-              <img class="service-card-img" src="https://www.prime-agence.fr/images/flyers/frame-6.jpg" alt=""/>
-              <img class="service-card-img" src="https://www.prime-agence.fr/images/flyers/frame-7.jpg" alt=""/>
-              <img class="service-card-img" src="https://www.prime-agence.fr/images/flyers/frame-18.jpg" alt=""/>
-            </div>
+          <div class="svc-card-num">01</div>
+          <div class="svc-card-title">Social Media</div>
+          <p class="svc-card-desc">On gère vos Instagram, TikTok, Facebook. Contenu, publications, interactions — votre audience grandit pendant que vous travaillez.</p>
+          <div class="svc-card-tags">
+            <span class="svc-card-tag">Instagram</span>
+            <span class="svc-card-tag">TikTok</span>
+            <span class="svc-card-tag">Community</span>
+          </div>
+        </div>
+        <div class="svc-card-right">
+          <span class="svc-card-metric">+340%</span>
+          <span class="svc-card-metric-label">Engagement moyen</span>
+          <div class="svc-card-imgs">
+            <img class="svc-card-img" src="https://www.prime-agence.fr/images/flyers/frame-6.jpg" alt=""/>
+            <img class="svc-card-img" src="https://www.prime-agence.fr/images/flyers/frame-7.jpg" alt=""/>
+            <img class="svc-card-img" src="https://www.prime-agence.fr/images/flyers/frame-18.jpg" alt=""/>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="service-tab" onclick="toggleTab(this)">
-      <div class="service-tab-head">
-        <div class="service-tab-head-left">
-          <span class="service-tab-num">02</span>
-          <span class="service-tab-name">Publicité</span>
-        </div>
-        <div class="service-tab-icon">
-          <svg viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-      </div>
-      <div class="service-card-body">
-        <div class="service-card">
-          <div>
-            <div class="service-card-icon" style="background:#0c0a09;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3h18v18H3z" fill="white" opacity="0.1"/><path d="M9 9h6v6H9z" fill="white"/><path d="M3 9h6M15 9h6M3 15h6M15 15h6M9 3v6M9 15v6M15 3v6M15 15v6" stroke="white" stroke-width="1.5"/></svg>
-            </div>
-            <div class="service-card-num">02</div>
-            <div class="service-card-title">Publicité</div>
-            <p class="service-card-desc">Meta Ads, TikTok Ads, Google Ads — on amène des clients directement dans votre salon, votre boutique, votre site.</p>
-            <div class="service-card-tags">
-              <span class="service-card-tag">Meta Ads</span>
-              <span class="service-card-tag">Google Ads</span>
-              <span class="service-card-tag">Retargeting</span>
-            </div>
+    <!-- 02 Publicité — dark, FORCE watermark -->
+    <div class="svc-card dark fade-in">
+      <div class="svc-watermark">FORCE</div>
+      <div class="svc-card-inner">
+        <div>
+          <div class="svc-card-icon">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="white" stroke-width="1.5"/><path d="M8 12h8M12 8v8" stroke="white" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="white" stroke-width="1.5"/></svg>
           </div>
-          <div class="service-card-right">
-            <span class="service-card-metric">5.2x</span>
-            <span class="service-card-metric-label">ROAS moyen</span>
+          <div class="svc-card-num">02</div>
+          <div class="svc-card-title">Publicité</div>
+          <p class="svc-card-desc">Meta Ads, TikTok Ads, Google Ads — on amène des clients directement dans votre salon, votre boutique, votre site.</p>
+          <div class="svc-card-tags">
+            <span class="svc-card-tag">Meta Ads</span>
+            <span class="svc-card-tag">Google Ads</span>
+            <span class="svc-card-tag">Retargeting</span>
           </div>
+        </div>
+        <div class="svc-card-right">
+          <span class="svc-card-metric">5.2x</span>
+          <span class="svc-card-metric-label">ROAS moyen</span>
         </div>
       </div>
     </div>
 
-    <div class="service-tab" onclick="toggleTab(this)">
-      <div class="service-tab-head">
-        <div class="service-tab-head-left">
-          <span class="service-tab-num">03</span>
-          <span class="service-tab-name">Contenu</span>
-        </div>
-        <div class="service-tab-icon">
-          <svg viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-      </div>
-      <div class="service-card-body">
-        <div class="service-card">
+    </div><!-- end 01+02 row -->
+
+    <!-- 03 + 04 — two cards side by side -->
+    <div class="svc-row-2">
+
+      <!-- 03 Contenu — light -->
+      <div class="svc-card light fade-in">
+        <div class="svc-card-inner">
           <div>
-            <div class="service-card-num">03</div>
-            <div class="service-card-title">Contenu</div>
-            <p class="service-card-desc">Vidéos, photos, Reels, TikToks — du contenu pro qui arrête le scroll et attire de nouveaux clients.</p>
-            <div class="service-card-tags">
-              <span class="service-card-tag">UGC</span>
-              <span class="service-card-tag">Reels</span>
-              <span class="service-card-tag">Production</span>
+            <div class="svc-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0c0a09" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
             </div>
-          </div>
-          <div class="service-card-right">
-            <span class="service-card-metric">+1Md</span>
-            <span class="service-card-metric-label">Vues générées</span>
-            <div class="service-img-grid" style="margin-top:16px;">
+            <div class="svc-card-num">03</div>
+            <div class="svc-card-title">Contenu</div>
+            <p class="svc-card-desc">Vidéos, photos, Reels, TikToks — du contenu pro qui arrête le scroll et attire de nouveaux clients.</p>
+            <div class="svc-card-tags">
+              <span class="svc-card-tag">UGC</span>
+              <span class="svc-card-tag">Reels</span>
+              <span class="svc-card-tag">Production</span>
+            </div>
+            <span class="svc-card-metric" style="margin-top:20px; display:block;">+1Md</span>
+            <span class="svc-card-metric-label" style="color:var(--muted);">Vues générées</span>
+            <div class="svc-img-grid">
               <img src="https://www.prime-agence.fr/images/contenu/tiktok.png" alt="TikTok"/>
               <img src="https://www.prime-agence.fr/images/contenu/instagram.png" alt="Instagram"/>
               <img src="https://www.prime-agence.fr/images/contenu/youtube.jpg" alt="YouTube"/>
@@ -1342,34 +1434,25 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="service-tab" onclick="toggleTab(this)">
-      <div class="service-tab-head">
-        <div class="service-tab-head-left">
-          <span class="service-tab-num">04</span>
-          <span class="service-tab-name">Site & Marque</span>
-        </div>
-        <div class="service-tab-icon">
-          <svg viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-      </div>
-      <div class="service-card-body">
-        <div class="service-card">
+      <!-- 04 Site & Marque — dark -->
+      <div class="svc-card dark fade-in">
+        <div class="svc-card-inner">
           <div>
-            <div class="service-card-num">04</div>
-            <div class="service-card-title">Site & Marque</div>
-            <p class="service-card-desc">Votre site internet professionnel + identité visuelle complète. Vos clients vous trouvent et vous font confiance.</p>
-            <div class="service-card-tags">
-              <span class="service-card-tag">Web Design</span>
-              <span class="service-card-tag">Branding</span>
-              <span class="service-card-tag">SEO Local</span>
+            <div class="svc-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             </div>
-          </div>
-          <div class="service-card-right">
-            <span class="service-card-metric">+180%</span>
-            <span class="service-card-metric-label">Leads en plus</span>
-            <div class="service-img-grid" style="margin-top:16px;">
+            <div class="svc-card-num">04</div>
+            <div class="svc-card-title">Site & Marque</div>
+            <p class="svc-card-desc">Votre site internet professionnel + identité visuelle complète. Vos clients vous trouvent et vous font confiance.</p>
+            <div class="svc-card-tags">
+              <span class="svc-card-tag">Web Design</span>
+              <span class="svc-card-tag">Branding</span>
+              <span class="svc-card-tag">SEO Local</span>
+            </div>
+            <span class="svc-card-metric" style="margin-top:20px; display:block; color:white;">+180%</span>
+            <span class="svc-card-metric-label" style="color:rgba(255,255,255,0.4);">Leads en plus</span>
+            <div class="svc-img-grid">
               <img src="https://www.prime-agence.fr/images/tech/shopify.png" alt="Shopify"/>
               <img src="https://www.prime-agence.fr/images/tech/wordpress.png" alt="WordPress"/>
               <img src="https://www.prime-agence.fr/images/tech/react.png" alt="React"/>
@@ -1379,34 +1462,28 @@
           </div>
         </div>
       </div>
+
     </div>
 
-    <div class="service-tab" onclick="toggleTab(this)">
-      <div class="service-tab-head">
-        <div class="service-tab-head-left">
-          <span class="service-tab-num">05</span>
-          <span class="service-tab-name">Influence & UGC</span>
-        </div>
-        <div class="service-tab-icon">
-          <svg viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-      </div>
-      <div class="service-card-body">
-        <div class="service-card">
-          <div>
-            <div class="service-card-num">05</div>
-            <div class="service-card-title">Influence & UGC</div>
-            <p class="service-card-desc">On connecte votre marque avec les bons créateurs. Contenu authentique qui convertit, partenariats qui font parler.</p>
-            <div class="service-card-tags">
-              <span class="service-card-tag">Influenceurs</span>
-              <span class="service-card-tag">UGC</span>
-              <span class="service-card-tag">Collaborations</span>
-            </div>
+    <!-- 05 Influence & UGC — light, full width -->
+    <div class="svc-card light fade-in">
+      <div class="svc-card-inner">
+        <div>
+          <div class="svc-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0c0a09" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <div class="service-card-right">
-            <span class="service-card-metric">x3</span>
-            <span class="service-card-metric-label">Taux de conversion</span>
+          <div class="svc-card-num">05</div>
+          <div class="svc-card-title">Influence & UGC</div>
+          <p class="svc-card-desc">On connecte votre marque avec les bons créateurs. Contenu authentique qui convertit, partenariats qui font parler.</p>
+          <div class="svc-card-tags">
+            <span class="svc-card-tag">Influenceurs</span>
+            <span class="svc-card-tag">UGC</span>
+            <span class="svc-card-tag">Collaborations</span>
           </div>
+        </div>
+        <div class="svc-card-right">
+          <span class="svc-card-metric">x3</span>
+          <span class="svc-card-metric-label">Taux de conversion</span>
         </div>
       </div>
     </div>
@@ -1424,7 +1501,7 @@
     <div class="result-card dark fade-in">
       <div class="result-metric-label">Chiffre d'affaires</div>
       <div class="result-counter" data-target="2" data-prefix="x">x2</div>
-      <p class="result-quote">"PRIME m'ont appelé, ils m'ont proposé une stratégie marketing en ligne et de là ils m'ont accompagné sur tout. J'ai quasiment doublé mon chiffre d'affaires."</p>
+      <p class="result-quote">"FORCE m'ont appelé, ils m'ont proposé une stratégie marketing en ligne et de là ils m'ont accompagné sur tout. J'ai quasiment doublé mon chiffre d'affaires."</p>
       <div class="result-author">
         <div class="result-author-left">
           <div class="result-avatar">K</div>
@@ -1441,7 +1518,7 @@
     <div class="result-card light fade-in d1">
       <div class="result-metric-label">Nouveaux clients</div>
       <div class="result-counter" data-target="340" data-prefix="+" data-suffix="%">+340%</div>
-      <p class="result-quote">"J'avais même pas de page Instagram pour le salon. Les gars de PRIME ont tout géré de A à Z et maintenant j'ai des clients qui viennent de villes à côté juste parce qu'ils m'ont vu sur TikTok."</p>
+      <p class="result-quote">"J'avais même pas de page Instagram pour le salon. Les gars de FORCE ont tout géré de A à Z et maintenant j'ai des clients qui viennent de villes à côté juste parce qu'ils m'ont vu sur TikTok."</p>
       <div class="result-author">
         <div class="result-author-left">
           <div class="result-avatar">S</div>
@@ -1475,7 +1552,7 @@
     <div class="result-card dark fade-in d2">
       <div class="result-metric-label">Réservations</div>
       <div class="result-counter" data-target="180" data-prefix="+" data-suffix="%">+180%</div>
-      <p class="result-quote">"PRIME m'ont fait un site, des vidéos, des pubs ciblées et maintenant j'ai des gens qui traversent la ville pour venir manger chez nous. Ils répondent direct quand t'as une question."</p>
+      <p class="result-quote">"FORCE m'ont fait un site, des vidéos, des pubs ciblées et maintenant j'ai des gens qui traversent la ville pour venir manger chez nous. Ils répondent direct quand t'as une question."</p>
       <div class="result-author">
         <div class="result-author-left">
           <div class="result-avatar">Y</div>
@@ -1622,7 +1699,7 @@
   <div class="contact-wrapper fade-in">
     <div class="badge">Contact</div>
     <h2 class="contact-title">Prêt à grandir?</h2>
-    <p class="contact-sub">Prenez RDV avec l'équipe PRIME. Audit gratuit, plan d'action concret en 30 min.</p>
+    <p class="contact-sub">Prenez RDV avec l'équipe FORCE. Audit gratuit, plan d'action concret en 30 min.</p>
     <form onsubmit="handleContact(event)">
       <div class="contact-fields">
         <input type="email" class="contact-input" placeholder="votre@email.com" required/>
@@ -1675,16 +1752,10 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-watermark">PRIME</div>
+  <div class="footer-watermark">FORCE</div>
   <div class="footer-content">
     <a href="#" class="footer-logo">
-      <svg viewBox="0 0 1152 250" fill="none">
-        <path d="M0.0011371 1.20015C0.667804 3.20015 76.4011 103.733 76.8011 103.333C77.0678 103.067 79.0678 92.8002 81.2011 80.5335C83.3345 68.1335 85.4678 56.9335 85.8678 55.6002C86.5345 53.3335 89.8678 53.2002 145.468 53.6002C210.801 54.0002 209.468 53.8668 216.001 62.9335C220.268 69.0668 220.401 87.3335 216.134 95.3335C212.268 102.533 205.734 108.533 197.734 112.267C191.201 115.333 190.401 115.333 133.468 115.733L75.7345 116.133L75.0678 119.067C73.4678 126.133 53.0678 244 53.0678 246.533C53.0678 249.333 53.4678 249.333 83.4678 249.333H113.868L121.068 208.667L128.401 168H154.401C186.401 168 199.334 166.533 216.001 160.8C232.934 155.067 242.001 149.467 254.268 137.333C270.668 121.067 279.334 102.933 282.401 78.0002C287.468 37.6002 268.134 10.6668 228.534 2.53348C217.201 0.266816 208.668 0.000149757 108.001 0.000149757C46.4011 0.000149757 -0.26553 0.533483 0.0011371 1.20015Z" fill="currentColor"/>
-        <path d="M319.734 0.533483C319.734 0.933483 311.334 48.6668 301.068 106.933C290.668 165.067 281.068 219.6 279.601 228C278.134 236.4 276.668 244.667 276.401 246.4L275.734 249.333L306.668 249.067L337.734 248.667L345.734 204L353.734 159.333H381.068C411.734 159.467 416.001 160.267 422.268 167.333C428.268 174.267 429.734 183.6 427.868 204.667C426.268 224 426.001 236.8 427.201 244.267L428.134 249.333H460.001H492.001L490.801 244.933C489.734 240.667 489.734 232.667 490.668 185.333C491.068 162.533 490.801 160.267 488.268 154.533C484.268 146 478.001 139.333 471.468 136.667L465.868 134.533L475.868 129.733C500.668 117.733 516.934 90.2668 517.068 60.4002C517.068 29.0668 499.868 9.60015 466.001 2.53348C454.934 0.266816 447.334 0.000149757 386.801 0.000149757C349.868 0.000149757 319.734 0.266816 319.734 0.533483ZM443.468 54.0002C449.868 57.8668 453.068 64.8002 453.068 75.0668C453.068 86.1335 447.468 98.0002 439.868 103.2C430.401 109.733 424.668 110.667 392.134 110.667C375.868 110.667 362.401 110.4 362.401 110C362.401 108.933 371.601 57.3335 372.401 53.6002L373.201 50.5335L406.134 50.9335C436.268 51.3335 439.468 51.6002 443.468 54.0002Z" fill="currentColor"/>
-        <path d="M557.736 2.93348C557.469 4.66682 555.602 14.6668 553.869 25.3335C547.602 61.4668 515.736 243.333 515.069 246.267L514.402 249.333H544.936C572.936 249.333 575.602 249.2 576.269 246.933C576.669 245.733 579.069 232 581.736 216.667C584.402 201.2 590.402 166.8 595.069 140C599.736 113.2 606.936 72.1335 611.069 48.6668C615.202 25.2002 618.936 4.66682 619.336 2.93348L620.002 0.000149757H589.202H558.402L557.736 2.93348Z" fill="currentColor"/>
-        <path d="M650.401 1.60015C650.401 2.53348 646.534 25.4668 641.734 52.6668C620.401 174.133 607.734 247.067 607.734 248.133C607.734 248.933 620.268 249.2 637.334 249.067L666.934 248.667L670.668 227.333C672.534 215.6 679.334 176 685.601 139.333C691.734 102.667 696.934 73.3335 696.934 74.1335C697.468 82.8002 706.801 150.667 713.468 194L721.868 248.667L747.201 249.067L772.534 249.333L801.734 190.4C833.068 126.933 856.134 79.6002 857.601 75.4668C859.734 69.4668 859.201 75.2002 856.268 90.6668C850.668 119.2 827.734 245.6 827.734 247.467C827.734 249.067 832.668 249.333 857.334 249.067L887.068 248.667L888.801 239.333C889.734 234.133 894.268 207.733 899.068 180.667C903.734 153.467 912.801 102.533 919.068 67.3335C925.334 32.1335 930.401 2.66682 930.401 1.73348C930.401 0.40015 920.668 0.000149757 885.068 0.000149757H839.734L834.534 10.9335C831.734 17.0668 822.401 36.6668 813.734 54.6668C787.068 110.533 775.601 134.8 768.934 149.867L762.668 164.267L761.868 158.533C761.468 155.333 759.868 142.8 758.401 130.667C756.134 113.333 748.001 52.2668 741.734 5.60015L740.934 0.000149757H695.601C660.401 0.000149757 650.401 0.40015 650.401 1.60015Z" fill="currentColor"/>
-        <path d="M961.202 8.93349C957.735 28.8002 922.402 229.333 920.669 238.267C919.602 243.6 919.069 248.267 919.469 248.667C919.869 249.067 962.669 249.333 1014.54 249.333H1108.94L1110.27 242.267C1114.14 222.4 1118.4 198.8 1118.4 196.933C1118.4 194.8 1113.07 194.667 1054.4 194.667C1019.2 194.667 990.402 194.4 990.402 194C990.402 193.6 992.269 183.333 994.402 171.067C996.669 158.933 998.402 148.4 998.402 147.867C998.402 147.2 1023.74 146.667 1054.8 146.667H1111.2L1115.47 122.933C1117.87 110 1119.74 98.9335 1119.74 98.2668C1119.74 97.7335 1094.54 97.3335 1063.74 97.3335C1019.87 97.3335 1007.74 96.9335 1007.74 95.6002C1007.74 94.8002 1009.34 84.8002 1011.34 73.7335L1015.07 53.3335H1078.67H1142.27L1143.6 46.2668C1145.47 37.6001 1151.74 2.40015 1151.74 0.933487C1151.74 0.400154 1109.2 0.000152588 1057.2 0.000152588H962.669L961.202 8.93349Z" fill="currentColor"/>
-      </svg>
+      <img src="logo.png" alt="Force Agency" style="height:8px;width:auto;display:block;">
     </a>
     <p class="footer-tagline">L'excellence digitale, simplement.</p>
     <hr class="footer-divider"/>
@@ -1702,7 +1773,7 @@
       </svg>
     </a>
     <hr class="footer-divider"/>
-    <p class="footer-copy">© 2026 PRIME AGENCE. Tous droits réservés.</p>
+    <p class="footer-copy">© 2026 FORCE AGENCY. Tous droits réservés.</p>
   </div>
 </footer>
 
@@ -1716,14 +1787,48 @@
   }, { passive: true });
 
   /* ── MOBILE MENU ── */
-  function openMobile() { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden'; }
-  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow=''; }
+  // Drawing panel animation
+  (function() {
+    const scenes = document.querySelectorAll('.dp-scene');
+    const labelEl = document.querySelector('.dp-label-text');
+    let cur = 0, typing = null;
+    function typeLabel(text) {
+      if (typing) clearInterval(typing);
+      labelEl.textContent = '';
+      let i = 0;
+      typing = setInterval(() => {
+        labelEl.textContent = 'Création · ' + text.slice(0, ++i);
+        if (i >= text.length) clearInterval(typing);
+      }, 38);
+    }
+    function drawScene(idx) {
+      const scene = scenes[idx];
+      const els = scene.querySelectorAll('.dp-el');
+      scene.classList.add('active');
+      typeLabel(scene.dataset.label);
+      els.forEach((el, i) => setTimeout(() => el.classList.add('drawn'), i * 110));
+      const total = els.length * 110 + 1700;
+      setTimeout(() => {
+        scene.classList.remove('active');
+        setTimeout(() => {
+          els.forEach(el => el.classList.remove('drawn'));
+          cur = (cur + 1) % scenes.length;
+          drawScene(cur);
+        }, 550);
+      }, total);
+    }
+    setTimeout(() => drawScene(0), 900);
+  })();
 
-  /* ── SERVICE TABS ── */
-  function toggleTab(el) {
-    const isActive = el.classList.contains('active');
-    document.querySelectorAll('.service-tab').forEach(t => t.classList.remove('active'));
-    if (!isActive) el.classList.add('active');
+  function openMobile() {
+    document.getElementById('mobileMenu').classList.add('open');
+    document.querySelector('.hamburger').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeMobile() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.querySelector('.hamburger').classList.remove('open');
+    document.body.style.overflow='';
   }
 
   /* ── FADE IN OBSERVER ── */
