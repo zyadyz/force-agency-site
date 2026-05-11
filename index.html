@@ -96,16 +96,17 @@
       -webkit-backdrop-filter: blur(20px) saturate(180%);
       box-shadow: 0 1px 0 rgba(0,0,0,0.06);
     }
-    .nav-logo img { height: 42px; width: auto; }
-    .nav-left { display: flex; align-items: center; gap: 48px; position: absolute; left: 50%; transform: translateX(-50%); }
+    .nav-logo img { height: 38px; width: auto; }
+    .nav-left { display: flex; align-items: center; gap: 48px; position: absolute; left: 38%; transform: translateX(-50%); }
     .nav-links-desktop {
       display: flex;
       align-items: center;
       gap: 4px;
       list-style: none;
+      margin-left: 64px;
     }
     .nav-links-desktop a {
-      font-size: 0.72rem;
+      font-size: 0.88rem;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -219,10 +220,11 @@
     #hero {
       position: relative;
       min-height: 100vh;
-      padding: 160px 80px 100px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding: 120px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
       overflow: hidden;
     }
     .hero-watermark {
@@ -243,7 +245,6 @@
     .hero-content {
       position: relative;
       z-index: 1;
-      max-width: 820px;
     }
     .hero-eyebrow {
       font-size: 0.68rem;
@@ -289,7 +290,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 72px;
+      margin-bottom: 40px;
       flex-wrap: wrap;
     }
     .btn-primary {
@@ -314,26 +315,150 @@
       transition: border-color 0.2s;
     }
     .btn-outline:hover { border-color: rgba(0,0,0,0.35); }
-    /* ════ DRAW PANEL ════ */
-    .draw-panel {
-      background: #0d0d0d;
-      border-radius: 20px;
-      overflow: hidden;
-      max-width: 420px;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.07);
+    /* ════ HERO VISUAL ════ */
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
-    .dp-header {
-      display: flex; align-items: center; gap: 10px;
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      background: #161616;
+    /* Schema orbital */
+    .hv-schema {
+      position: relative;
+      height: 420px;
     }
+    .hv-schema-svg {
+      position: absolute;
+      inset: 0; width: 100%; height: 100%;
+      pointer-events: none;
+    }
+    .hv-line {
+      stroke: rgba(0,0,0,0.12);
+      stroke-width: 1.2;
+      stroke-dasharray: 5 5;
+    }
+    .hv-center-node {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--dark);
+      border-radius: 22px;
+      padding: 22px 30px;
+      text-align: center;
+      z-index: 2;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.22);
+    }
+    .hv-cn-logo {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 1.7rem;
+      letter-spacing: -0.02em;
+      color: #E7C375;
+      line-height: 1;
+    }
+    .hv-cn-sub {
+      font-size: 0.55rem;
+      letter-spacing: 0.22em;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      margin-top: 4px;
+      display: block;
+    }
+    .hv-cn-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.58rem;
+      font-weight: 600;
+      color: #E7C375;
+      margin-top: 10px;
+    }
+    .hv-snode {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 16px;
+      padding: 13px 16px;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.07);
+      z-index: 2;
+      text-align: left;
+      min-width: 120px;
+    }
+    .hv-snode-name {
+      font-size: 0.67rem;
+      font-weight: 700;
+      color: var(--muted2);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+    .hv-snode-stat {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+      line-height: 1;
+    }
+    .hv-snode-sub {
+      font-size: 0.58rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .hv-snode-tag {
+      display: inline-block;
+      font-size: 0.55rem;
+      font-weight: 700;
+      background: #f0f0f0;
+      color: var(--dark);
+      padding: 2px 7px;
+      border-radius: 100px;
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    /* Positions */
+    .hv-sn-1 { top: 11%; left: 22%; }
+    .hv-sn-2 { top: 11%; left: 68%; }
+    .hv-sn-3 { top: 50%; left: 82%; }
+    .hv-sn-4 { top: 85%; left: 68%; }
+    .hv-sn-5 { top: 85%; left: 22%; }
+    .hv-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .hv-metric {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 16px;
+      padding: 16px 14px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    }
+    .hv-metric-badge {
+      font-size: 0.57rem; font-weight: 700;
+      color: #16a34a; background: #dcfce7;
+      padding: 2px 7px; border-radius: 100px;
+      display: inline-block; margin-bottom: 8px;
+      letter-spacing: 0.03em;
+    }
+    .hv-metric-val {
+      font-family: var(--font-head); font-weight: 900;
+      font-size: 1.5rem; letter-spacing: -0.03em;
+      color: var(--dark); line-height: 1; margin-bottom: 4px;
+    }
+    .hv-metric-lbl {
+      font-size: 0.68rem; font-weight: 600;
+      color: var(--dark); margin-bottom: 2px;
+    }
+    .hv-metric-sub { font-size: 0.6rem; color: var(--muted); }
+    /* ════ DRAW ANIMATION ════ */
     .dp-dots { display: flex; gap: 5px; }
     .dp-dots span { width: 10px; height: 10px; border-radius: 50%; }
     .dp-dots span:nth-child(1) { background: #ff5f57; }
     .dp-dots span:nth-child(2) { background: #febc2e; }
     .dp-dots span:nth-child(3) { background: #28c840; }
-    .dp-title { font-size: 0.7rem; color: rgba(255,255,255,0.35); font-weight: 500; letter-spacing: 0.05em; flex: 1; text-align: center; }
     .dp-live { display: flex; align-items: center; gap: 5px; font-size: 0.65rem; color: #E7C375; font-weight: 600; }
     .dp-pulse { width: 6px; height: 6px; border-radius: 50%; background: #E7C375; animation: dpPulse 1.5s ease-in-out infinite; }
     @keyframes dpPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(0.6)} }
@@ -341,7 +466,7 @@
     .dp-stage {
       position: relative; min-height: 225px;
       display: flex; align-items: center; justify-content: center;
-      padding: 18px 20px;
+      padding: 10px 20px; width: 100%;
     }
     .dp-scene {
       position: absolute; opacity: 0;
@@ -349,7 +474,7 @@
       transition: opacity 0.5s ease; width: 100%;
     }
     .dp-scene.active { opacity: 1; }
-    .dp-scene svg { max-height: 215px; width: auto; }
+    .dp-scene svg { max-height: 210px; width: auto; }
     .dp-el {
       fill: none; stroke: #E7C375;
       stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
@@ -360,8 +485,8 @@
     .dp-el.thick { stroke-width: 2.5; }
     .dp-el.drawn { stroke-dashoffset: 0; }
     .dp-footer {
-      padding: 10px 18px 14px; border-top: 1px solid rgba(255,255,255,0.06);
-      background: #161616; display: flex; align-items: center; gap: 3px; min-height: 40px;
+      padding: 10px 18px 12px; border-top: 1px solid rgba(255,255,255,0.06);
+      background: #161616; display: flex; align-items: center; gap: 3px; min-height: 40px; width: 100%;
     }
     .dp-label-text { font-size: 0.68rem; color: rgba(255,255,255,0.4); font-weight: 500; letter-spacing: 0.04em; font-family: 'Courier New', monospace; }
     .dp-cursor { font-size: 0.8rem; color: #E7C375; animation: dpBlink 0.9s step-end infinite; }
@@ -435,7 +560,7 @@
     }
     .services-title { font-size: clamp(26px, 3.2vw, 52px); }
     .gold-accent {
-      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-family: 'Instrument Serif', Georgia, serif;
       font-style: italic;
       font-weight: 700;
       color: #E7C375;
@@ -445,6 +570,7 @@
       font-family: var(--font-italic);
       font-style: italic;
       font-weight: 400;
+      color: #E7C375;
       font-size: 1em;
       letter-spacing: -0.02em;
     }
@@ -457,143 +583,361 @@
     .services-header { margin-bottom: 48px; }
     .services-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 24px; }
     /* ════ SERVICES CARDS ════ */
-    .services-cards { display: flex; flex-direction: column; gap: 12px; }
+    @keyframes shimmerSlide {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .services-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    /* Card = grid container */
     .svc-card {
-      border-radius: 20px;
-      padding: 40px 44px;
+      border-radius: 16px;
+      padding: 48px 40px;
       position: relative;
       overflow: hidden;
-    }
-    .svc-card.light { background: #f3f3f1; }
-    .svc-card.dark { background: #0c0a09; }
-    .svc-card-inner {
+      cursor: default;
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1.2fr 1fr;
       gap: 40px;
-      align-items: flex-start;
-      position: relative;
-      z-index: 1;
+      align-items: center;
+      /* Scroll-in animation */
+      opacity: 0;
+      transform: translateY(60px) scale(0.96);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s;
     }
+    .svc-card.in-view { opacity: 1; transform: none; }
+    .svc-card.svc-full { grid-column: 1 / -1; }
+    .svc-card.svc-half { grid-template-columns: 1fr; }
+
+    .svc-card.light {
+      background: linear-gradient(135deg, rgba(231,195,117,0.18) 0%, rgba(231,195,117,0.07) 100%);
+      border: 1px solid rgba(231,195,117,0.28);
+      box-shadow: rgba(0,0,0,0.03) 0px 2px 8px, rgba(0,0,0,0.05) 0px 8px 32px;
+    }
+    .svc-card.dark {
+      background: #0c0a09;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: rgba(0,0,0,0.3) 0px 8px 32px, rgba(0,0,0,0.2) 0px 2px 8px;
+    }
+
+    /* Dot pattern overlay (all cards) */
+    .svc-dot-pattern {
+      position: absolute; inset: 0;
+      opacity: 0.35; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(231,195,117,0.35) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, transparent 60%);
+      -webkit-mask-image: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, transparent 60%);
+    }
+    /* Extra overlays for dark cards */
+    .svc-white-dots {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .svc-glow {
+      position: absolute; top: -30%; right: -15%;
+      width: 50%; height: 80%; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(circle, rgba(231,195,117,0.06) 0%, transparent 70%);
+    }
+    .svc-shimmer {
+      position: absolute; inset: 0; opacity: 0; pointer-events: none;
+      background: linear-gradient(105deg, transparent 20%, rgba(231,195,117,0.04) 40%, rgba(231,195,117,0.08) 50%, rgba(231,195,117,0.04) 60%, transparent 80%);
+      background-size: 200% 100%;
+      animation: shimmerSlide 2.5s ease-in-out infinite;
+      transition: opacity 0.4s;
+      border-radius: 16px;
+    }
+    .svc-card.dark:hover .svc-shimmer { opacity: 1; }
+
+    /* Accent line */
+    .card-accent-line {
+      position: absolute; bottom: 0; left: 0;
+      width: 100%; height: 4px;
+      background: #E7C375;
+      border-radius: 0 0 16px 16px;
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .svc-card:hover .card-accent-line { transform: scaleX(1); }
+
+    /* Content z-index above overlays */
+    .svc-col-left { position: relative; z-index: 1; }
+    .svc-col-right {
+      border-left: 1px solid rgba(0,0,0,0.06);
+      padding-left: 40px;
+      display: flex; flex-direction: column;
+      align-items: flex-end; gap: 24px;
+      text-align: right;
+      position: relative; z-index: 1;
+    }
+    .svc-card.dark .svc-col-right { border-left-color: rgba(255,255,255,0.08); }
+
+    /* Icon */
     .svc-card-icon {
-      width: 48px; height: 48px;
-      border-radius: 12px;
+      width: 56px; height: 56px;
+      border-radius: 16px;
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 14px;
-      flex-shrink: 0;
+      margin-bottom: 16px; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
     }
-    .svc-card.light .svc-card-icon { background: white; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-    .svc-card.dark .svc-card-icon { background: rgba(255,255,255,0.08); }
-    .svc-card-icon svg { width: 26px; height: 26px; }
+    .svc-card:hover .svc-card-icon { transform: translateY(-4px) scale(1.08); box-shadow: rgba(12,10,9,0.08) 0px 8px 24px; }
+    .svc-card.light .svc-card-icon { background: rgba(231,195,117,0.22); }
+    .svc-card.dark .svc-card-icon { background: rgba(231,195,117,0.12); }
+    .svc-card-icon svg { width: 28px; height: 28px; }
+
+    .svc-card-icon-num {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
+    }
     .svc-card-num {
       font-family: var(--font-head);
-      font-weight: 800;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      margin-bottom: 10px;
+      font-weight: 900;
+      font-size: 2.5rem;
+      line-height: 1;
     }
-    .svc-card.light .svc-card-num { color: var(--muted); }
-    .svc-card.dark .svc-card-num { color: rgba(255,255,255,0.35); }
+    .svc-card.light .svc-card-num { color: rgba(10,10,10,0.04); }
+    .svc-card.dark .svc-card-num { color: rgba(255,255,255,0.04); }
+
     .svc-card-title {
       font-family: var(--font-head);
-      font-weight: 900;
-      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
-      letter-spacing: -0.03em;
-      line-height: 1;
-      margin-bottom: 14px;
+      font-weight: 800;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      margin-bottom: 12px;
     }
     .svc-card.light .svc-card-title { color: var(--dark); }
-    .svc-card.dark .svc-card-title { color: white; }
+    .svc-card.dark .svc-card-title { color: #fff; }
+
     .svc-card-desc {
-      font-size: 0.9rem;
-      line-height: 1.75;
-      margin-bottom: 20px;
-      max-width: 420px;
+      font-size: 0.9rem; line-height: 1.75;
+      margin-bottom: 24px; max-width: 420px;
     }
     .svc-card.light .svc-card-desc { color: var(--muted2); }
     .svc-card.dark .svc-card-desc { color: rgba(255,255,255,0.5); }
+
     .svc-card-tags { display: flex; gap: 8px; flex-wrap: wrap; }
     .svc-card-tag {
-      font-size: 0.7rem;
-      font-weight: 500;
-      border-radius: 100px;
-      padding: 5px 14px;
+      font-size: 0.7rem; font-weight: 600;
+      border-radius: 100px; padding: 6px 14px;
+      letter-spacing: 0.04em;
     }
-    .svc-card.light .svc-card-tag { color: var(--dark); background: white; border: 1px solid rgba(0,0,0,0.1); }
-    .svc-card.dark .svc-card-tag { color: white; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); }
-    .svc-card-right { text-align: right; flex-shrink: 0; min-width: 140px; }
+    .svc-card.light .svc-card-tag { color: var(--dark); background: rgba(231,195,117,0.25); border: 1px solid rgba(231,195,117,0.35); }
+    .svc-card.dark .svc-card-tag { color: #E7C375; background: rgba(231,195,117,0.1); border: 1px solid rgba(231,195,117,0.2); }
+
+    /* Metric */
     .svc-card-metric {
-      font-family: var(--font-head);
-      font-weight: 900;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      letter-spacing: -0.04em;
-      line-height: 1;
-      display: block;
+      font-family: var(--font-head); font-weight: 900;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: -0.03em; line-height: 1; display: block;
     }
     .svc-card.light .svc-card-metric { color: var(--dark); }
-    .svc-card.dark .svc-card-metric { color: white; }
+    .svc-card.dark .svc-card-metric { color: #E7C375; }
     .svc-card-metric-label {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      display: block;
-      margin-top: 4px;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      display: block; margin-top: 6px;
     }
     .svc-card.light .svc-card-metric-label { color: var(--muted); }
     .svc-card.dark .svc-card-metric-label { color: rgba(255,255,255,0.4); }
-    .svc-card-imgs {
-      display: flex;
-      margin-top: 24px;
-      justify-content: flex-end;
+
+    /* Social Media: fanned images */
+    .svc-previews {
+      position: relative; width: 260px; height: 200px;
+      display: flex; align-items: center; justify-content: center;
     }
-    .svc-card-img {
-      width: 76px;
-      height: 114px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-left: -14px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    }
-    .svc-card-img:first-child { margin-left: 0; transform: rotate(-8deg); }
-    .svc-card-img:nth-child(2) { transform: rotate(0deg); }
-    .svc-card-img:nth-child(3) { transform: rotate(8deg); }
-    .svc-img-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 58px);
-      gap: 5px;
-      margin-top: 16px;
-      justify-content: flex-end;
-    }
-    .svc-img-grid img {
-      width: 58px; height: 58px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-    .svc-watermark {
+    .preview-phone {
       position: absolute;
-      right: -10px;
-      top: 50%;
-      transform: translateY(-50%);
+      width: 100px; height: 175px;
+      border-radius: 14px; overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .preview-phone:nth-child(1) { transform: rotate(-10deg) translateX(-70px); z-index: 1; }
+    .preview-phone:nth-child(2) { transform: rotate(2deg); z-index: 3; }
+    .preview-phone:nth-child(3) { transform: rotate(12deg) translateX(70px); z-index: 1; }
+    .preview-phone img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .svc-card:hover .preview-phone:nth-child(1) { transform: rotate(-12deg) translateX(-70px) translateY(-4px); }
+    .svc-card:hover .preview-phone:nth-child(2) { transform: rotate(2deg) translateY(-8px) scale(1.05); }
+    .svc-card:hover .preview-phone:nth-child(3) { transform: rotate(12deg) translateX(70px) translateY(-4px); }
+
+    /* UGC Videos */
+    .svc-ugc-videos {
+      position: relative; width: 260px; height: 200px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .svc-ugc-video {
+      position: absolute;
+      width: 95px; height: 168px;
+      border-radius: 14px; overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .svc-ugc-video:nth-child(1) { transform: rotate(-10deg) translateX(-70px); z-index: 1; }
+    .svc-ugc-video:nth-child(2) { transform: rotate(2deg); z-index: 3; }
+    .svc-ugc-video:nth-child(3) { transform: rotate(10deg) translateX(70px); z-index: 1; }
+    .svc-ugc-video video { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+    .svc-card:hover .svc-ugc-video:nth-child(1) { transform: rotate(-12deg) translateX(-70px) translateY(-4px); }
+    .svc-card:hover .svc-ugc-video:nth-child(2) { transform: rotate(2deg) translateY(-8px) scale(1.05); }
+    .svc-card:hover .svc-ugc-video:nth-child(3) { transform: rotate(10deg) translateX(70px) translateY(-4px); }
+
+    /* Icon grid (Contenu, Site) */
+    .svc-img-grid {
+      display: grid; grid-template-columns: repeat(3, 58px);
+      gap: 5px; margin-top: 16px;
+    }
+    .svc-img-grid img { width: 58px; height: 58px; object-fit: cover; border-radius: 8px; }
+
+    /* Watermark */
+    .svc-watermark {
+      position: absolute; right: -20px; bottom: -30px;
+      width: 350px; opacity: 0.04;
+      pointer-events: none; user-select: none;
+      font-family: var(--font-head); font-weight: 900;
+      font-size: clamp(80px, 14vw, 180px);
+      letter-spacing: -0.04em; color: #fff;
+      white-space: nowrap; line-height: 1;
+    }
+
+    /* ════ PORTFOLIO ════ */
+    #portfolio { background: var(--bg); }
+    .portfolio-header { margin-bottom: 48px; }
+    .pf-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 48px;
+    }
+    .pf-tab {
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 10px 22px;
+      border-radius: 100px;
+      border: 1px solid rgba(231,195,117,0.35);
+      background: rgba(231,195,117,0.25);
+      color: var(--dark);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .pf-tab:hover { background: rgba(231,195,117,0.38); }
+    .pf-tab.active {
+      background: var(--dark);
+      border-color: var(--dark);
+      color: #E7C375;
+    }
+    .pf-panel { display: none; }
+    .pf-panel.active { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+    /* Carte portfolio site web */
+    .pf-card-site {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.07);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .pf-card-site::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: #E7C375;
+    }
+    .pf-card-preview {
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      background: #e8e4dc;
+    }
+    .pf-card-preview img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .pf-card-preview-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.2);
+    }
+    .pf-card-body {
+      padding: 18px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+    .pf-card-cat {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #E7C375;
+    }
+    .pf-card-name {
       font-family: var(--font-head);
       font-weight: 900;
-      font-size: clamp(80px, 14vw, 180px);
-      letter-spacing: -0.04em;
-      color: rgba(255,255,255,0.04);
-      pointer-events: none;
-      user-select: none;
-      white-space: nowrap;
-      line-height: 1;
+      font-size: 1.05rem;
+      color: var(--dark);
+      line-height: 1.2;
     }
-    .svc-row-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+    .pf-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 100px;
+      background: rgba(231,195,117,0.25);
+      border: 1px solid rgba(231,195,117,0.35);
+      color: var(--dark);
+      text-decoration: none;
+      align-self: flex-start;
+      transition: background 0.18s, color 0.18s, border-color 0.18s;
     }
-    .svc-row-2 .svc-card-inner {
-      grid-template-columns: 1fr;
+    .pf-card-link:hover {
+      background: var(--dark);
+      border-color: var(--dark);
+      color: #E7C375;
     }
-    .svc-row-2 .svc-card-right { text-align: left; }
-    .svc-row-2 .svc-img-grid { justify-content: flex-start; }
+
+    /* Flyers / Visuels — placeholder simple */
+    .pf-item {
+      border-radius: 16px;
+      overflow: hidden;
+      background: #f0ece4;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pf-item-placeholder {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.2);
+    }
 
     /* ════ RESULTS ════ */
     #results { background: var(--bg); }
@@ -1123,7 +1467,10 @@
       .nav-left { position: static; transform: none; left: auto; gap: 0; }
       .nav-logo img { height: 33px !important; }
       .btn-nav-dark { display: none; }
-      #hero { padding: 110px 20px 60px; }
+      #hero { padding: 110px 20px 60px; grid-template-columns: 1fr; gap: 40px; }
+      .hv-studio-body { grid-template-columns: 1fr; }
+      .hv-proj-list { display: none; }
+      .hv-metrics { grid-template-columns: 1fr; }
       .hero-stats { max-width: 100%; flex-direction: column; border-radius: 16px; }
       .hero-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
       .hero-stat:last-child { border-bottom: none; }
@@ -1170,12 +1517,14 @@
 <nav id="mainNav">
   <div class="nav-left">
     <a href="#" class="nav-logo">
-      <img src="logo.png" alt="Force Agency" style="height:42px;width:auto;display:block;">
+      <img src="logo.png" alt="Force Agency" style="height:38px;width:auto;display:block;">
     </a>
     <ul class="nav-links-desktop">
       <li><a href="#services">Services</a></li>
       <li><a href="#results">Résultats</a></li>
       <li><a href="#process">Process</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#offres">Nos offres</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -1202,90 +1551,81 @@
       <a href="#contact" class="btn-primary">Booster mon business</a>
       <a href="#results" class="btn-outline">Voir les résultats</a>
     </div>
-    <div class="draw-panel fade-in d3">
-      <div class="dp-header">
-        <div class="dp-dots"><span></span><span></span><span></span></div>
-        <span class="dp-title">Force Agency · Studio</span>
-        <span class="dp-live"><span class="dp-pulse"></span>En création</span>
+  </div>
+
+  <!-- HERO VISUAL -->
+  <div class="hero-visual fade-in d3">
+    <!-- Schéma orbital -->
+    <div class="hv-schema">
+      <!-- Lignes SVG -->
+      <svg class="hv-schema-svg" viewBox="0 0 600 400" preserveAspectRatio="none">
+        <line class="hv-line" x1="300" y1="210" x2="132" y2="46"/>
+        <line class="hv-line" x1="300" y1="210" x2="408" y2="46"/>
+        <line class="hv-line" x1="300" y1="210" x2="492" y2="210"/>
+        <line class="hv-line" x1="300" y1="210" x2="408" y2="357"/>
+        <line class="hv-line" x1="300" y1="210" x2="132" y2="357"/>
+      </svg>
+
+      <!-- Nœud central -->
+      <div class="hv-center-node">
+        <div class="hv-cn-logo">FORCE</div>
+        <span class="hv-cn-sub">Agency</span>
+        <div class="hv-cn-badge"><span class="dp-pulse"></span>30+ marques actives</div>
       </div>
-      <div class="dp-stage">
-        <!-- Flyer Promotionnel -->
-        <div class="dp-scene" data-label="Flyer Promotionnel">
-          <svg viewBox="0 0 160 215" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect class="dp-el" x="15" y="5" width="130" height="205" rx="4" pathLength="100"/>
-            <rect class="dp-el dim" x="15" y="5" width="130" height="55" rx="4" pathLength="100"/>
-            <line class="dp-el thick" x1="28" y1="27" x2="128" y2="27" pathLength="100"/>
-            <line class="dp-el" x1="28" y1="39" x2="98" y2="39" pathLength="100"/>
-            <rect class="dp-el" x="25" y="68" width="110" height="75" rx="2" pathLength="100"/>
-            <line class="dp-el dim" x1="25" y1="68" x2="135" y2="143" pathLength="100"/>
-            <line class="dp-el dim" x1="135" y1="68" x2="25" y2="143" pathLength="100"/>
-            <line class="dp-el thick" x1="25" y1="157" x2="108" y2="157" pathLength="100"/>
-            <line class="dp-el" x1="25" y1="168" x2="135" y2="168" pathLength="100"/>
-            <line class="dp-el" x1="25" y1="178" x2="88" y2="178" pathLength="100"/>
-            <rect class="dp-el" x="38" y="191" width="84" height="14" rx="7" pathLength="100"/>
-          </svg>
-        </div>
-        <!-- Site Web Vitrine -->
-        <div class="dp-scene" data-label="Site Web Vitrine">
-          <svg viewBox="0 0 250 175" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect class="dp-el" x="5" y="5" width="240" height="165" rx="8" pathLength="100"/>
-            <line class="dp-el" x1="5" y1="33" x2="245" y2="33" pathLength="100"/>
-            <circle class="dp-el" cx="20" cy="19" r="5" pathLength="100"/>
-            <circle class="dp-el" cx="34" cy="19" r="5" pathLength="100"/>
-            <circle class="dp-el" cx="48" cy="19" r="5" pathLength="100"/>
-            <rect class="dp-el dim" x="68" y="11" width="114" height="16" rx="8" pathLength="100"/>
-            <rect class="dp-el dim" x="15" y="42" width="220" height="60" rx="3" pathLength="100"/>
-            <line class="dp-el thick" x1="25" y1="62" x2="130" y2="62" pathLength="100"/>
-            <line class="dp-el" x1="25" y1="74" x2="94" y2="74" pathLength="100"/>
-            <rect class="dp-el" x="25" y="85" width="50" height="11" rx="5" pathLength="100"/>
-            <rect class="dp-el" x="15" y="113" width="66" height="47" rx="3" pathLength="100"/>
-            <rect class="dp-el" x="92" y="113" width="66" height="47" rx="3" pathLength="100"/>
-            <rect class="dp-el" x="169" y="113" width="66" height="47" rx="3" pathLength="100"/>
-            <line class="dp-el dim" x1="22" y1="128" x2="72" y2="128" pathLength="100"/>
-            <line class="dp-el dim" x1="22" y1="138" x2="65" y2="138" pathLength="100"/>
-            <line class="dp-el dim" x1="99" y1="128" x2="149" y2="128" pathLength="100"/>
-            <line class="dp-el dim" x1="99" y1="138" x2="142" y2="138" pathLength="100"/>
-            <line class="dp-el dim" x1="176" y1="128" x2="226" y2="128" pathLength="100"/>
-            <line class="dp-el dim" x1="176" y1="138" x2="219" y2="138" pathLength="100"/>
-          </svg>
-        </div>
-        <!-- Pub Meta Ads -->
-        <div class="dp-scene" data-label="Pub Meta Ads">
-          <svg viewBox="0 0 160 215" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect class="dp-el" x="15" y="5" width="130" height="205" rx="18" pathLength="100"/>
-            <rect class="dp-el dim" x="24" y="22" width="112" height="175" pathLength="100"/>
-            <circle class="dp-el" cx="38" cy="38" r="8" pathLength="100"/>
-            <line class="dp-el" x1="52" y1="34" x2="105" y2="34" pathLength="100"/>
-            <line class="dp-el dim" x1="52" y1="43" x2="84" y2="43" pathLength="100"/>
-            <rect class="dp-el" x="24" y="54" width="112" height="95" pathLength="100"/>
-            <line class="dp-el thick" x1="36" y1="88" x2="124" y2="88" pathLength="100"/>
-            <line class="dp-el" x1="36" y1="100" x2="106" y2="100" pathLength="100"/>
-            <line class="dp-el dim" x1="36" y1="152" x2="120" y2="152" pathLength="100"/>
-            <rect class="dp-el" x="36" y="160" width="88" height="16" rx="8" pathLength="100"/>
-            <line class="dp-el" x1="68" y1="208" x2="92" y2="208" pathLength="100"/>
-          </svg>
-        </div>
-        <!-- Contenu TikTok -->
-        <div class="dp-scene" data-label="Contenu TikTok">
-          <svg viewBox="0 0 160 215" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect class="dp-el" x="15" y="5" width="130" height="205" rx="18" pathLength="100"/>
-            <rect class="dp-el dim" x="24" y="22" width="112" height="175" pathLength="100"/>
-            <polygon class="dp-el" points="68,88 68,125 106,107" pathLength="100"/>
-            <path class="dp-el" d="M115 55 C115 47 126 44 126 52 C130 44 141 47 141 55 C141 66 126 76 126 76 C126 76 115 66 115 55Z" pathLength="100"/>
-            <rect class="dp-el dim" x="116" y="82" width="24" height="20" rx="5" pathLength="100"/>
-            <path class="dp-el dim" d="M120 108 L140 101 M136 94 L140 101 L133 107" pathLength="100"/>
-            <circle class="dp-el" cx="128" cy="133" r="9" pathLength="100"/>
-            <circle class="dp-el" cx="128" cy="133" r="4" pathLength="100"/>
-            <line class="dp-el thick" x1="28" y1="170" x2="98" y2="170" pathLength="100"/>
-            <line class="dp-el dim" x1="28" y1="181" x2="112" y2="181" pathLength="100"/>
-            <line class="dp-el dim" x1="28" y1="190" x2="88" y2="190" pathLength="100"/>
-            <line class="dp-el" x1="60" y1="208" x2="100" y2="208" pathLength="100"/>
-          </svg>
-        </div>
+
+      <!-- Social Media -->
+      <div class="hv-snode hv-sn-1">
+        <div class="hv-snode-tag">Social Media</div>
+        <div class="hv-snode-stat">+340%</div>
+        <div class="hv-snode-sub">Engagement moyen</div>
       </div>
-      <div class="dp-footer">
-        <span class="dp-label-text"></span>
-        <span class="dp-cursor">|</span>
+
+      <!-- Meta Ads -->
+      <div class="hv-snode hv-sn-2">
+        <div class="hv-snode-tag">Publicité</div>
+        <div class="hv-snode-stat">x5.2</div>
+        <div class="hv-snode-sub">ROAS moyen</div>
+      </div>
+
+      <!-- Site Web -->
+      <div class="hv-snode hv-sn-3">
+        <div class="hv-snode-tag">Site & Marque</div>
+        <div class="hv-snode-stat">+180%</div>
+        <div class="hv-snode-sub">Conversions</div>
+      </div>
+
+      <!-- TikTok -->
+      <div class="hv-snode hv-sn-4">
+        <div class="hv-snode-tag">TikTok / UGC</div>
+        <div class="hv-snode-stat">+1Md</div>
+        <div class="hv-snode-sub">Vues organiques</div>
+      </div>
+
+      <!-- Branding -->
+      <div class="hv-snode hv-sn-5">
+        <div class="hv-snode-tag">Influence</div>
+        <div class="hv-snode-stat">x3</div>
+        <div class="hv-snode-sub">Notoriété</div>
+      </div>
+    </div>
+    <div class="hv-metrics">
+      <div class="hv-metric">
+        <div class="hv-metric-badge">META ADS</div>
+        <div class="hv-metric-val">+340%</div>
+        <div class="hv-metric-lbl">ROAS moyen</div>
+        <div class="hv-metric-sub">sur 90 jours glissants</div>
+      </div>
+      <div class="hv-metric">
+        <div class="hv-metric-badge">CROISSANCE</div>
+        <div class="hv-metric-val">x2.4</div>
+        <div class="hv-metric-lbl">CA client moyen</div>
+        <div class="hv-metric-sub">en 6 mois d'accompagnement</div>
+      </div>
+      <div class="hv-metric">
+        <div class="hv-metric-badge">ACTIF</div>
+        <div class="hv-metric-val">30+</div>
+        <div class="hv-metric-lbl">Marques actives</div>
+        <div class="hv-metric-sub">accompagnées par FORCE</div>
       </div>
     </div>
   </div>
@@ -1340,154 +1680,241 @@
 <section class="section-padding" id="services">
   <div class="services-header fade-in">
     <div class="badge">Nos Services</div>
-    <h2 class="section-title services-title">Tout ce dont votre<br>business a besoin<br>pour passer au<br><span class="gold-accent">niveau supérieur.</span></h2>
+    <h2 class="section-title services-title">Tout ce dont votre<br>business a besoin<br>pour passer au<br><span class="italic-accent">niveau supérieur.</span></h2>
     <p class="section-sub">Concentrez-vous sur votre métier. FORCE gère votre visibilité.</p>
   </div>
   <hr class="services-divider"/>
   <div class="services-cards">
 
-    <!-- 01 + 02 side by side -->
-    <div class="svc-row-2">
-
-    <!-- 01 Social Media — light -->
-    <div class="svc-card light fade-in">
-      <div class="svc-card-inner">
-        <div>
+    <!-- 01 Social Media — light, full width -->
+    <div class="svc-card light svc-full">
+      <div class="svc-dot-pattern"></div>
+      <div class="card-accent-line"></div>
+      <div class="svc-col-left">
+        <div class="svc-card-icon-num">
           <div class="svc-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0c0a09" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="#0c0a09" stroke="none"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0c0a09" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="#0c0a09" stroke="none"/></svg>
           </div>
-          <div class="svc-card-num">01</div>
-          <div class="svc-card-title">Social Media</div>
-          <p class="svc-card-desc">On gère vos Instagram, TikTok, Facebook. Contenu, publications, interactions — votre audience grandit pendant que vous travaillez.</p>
-          <div class="svc-card-tags">
-            <span class="svc-card-tag">Instagram</span>
-            <span class="svc-card-tag">TikTok</span>
-            <span class="svc-card-tag">Community</span>
-          </div>
+          <span class="svc-card-num">01</span>
         </div>
-        <div class="svc-card-right">
+        <div class="svc-card-title">Social Media</div>
+        <p class="svc-card-desc">On gère vos Instagram, TikTok, Facebook. Contenu, publications, interactions — votre audience grandit pendant que vous travaillez.</p>
+        <div class="svc-card-tags">
+          <span class="svc-card-tag">Instagram</span>
+          <span class="svc-card-tag">TikTok</span>
+          <span class="svc-card-tag">Community</span>
+        </div>
+      </div>
+      <div class="svc-col-right">
+        <div>
           <span class="svc-card-metric">+340%</span>
           <span class="svc-card-metric-label">Engagement moyen</span>
-          <div class="svc-card-imgs">
-            <img class="svc-card-img" src="https://www.prime-agence.fr/images/flyers/frame-6.jpg" alt=""/>
-            <img class="svc-card-img" src="https://www.prime-agence.fr/images/flyers/frame-7.jpg" alt=""/>
-            <img class="svc-card-img" src="https://www.prime-agence.fr/images/flyers/frame-18.jpg" alt=""/>
-          </div>
+        </div>
+        <div class="svc-previews">
+          <div class="preview-phone"><img src="https://www.prime-agence.fr/images/flyers/frame-6.jpg" alt=""/></div>
+          <div class="preview-phone"><img src="https://www.prime-agence.fr/images/flyers/frame-7.jpg" alt=""/></div>
+          <div class="preview-phone"><img src="https://www.prime-agence.fr/images/flyers/frame-18.jpg" alt=""/></div>
         </div>
       </div>
     </div>
 
-    <!-- 02 Publicité — dark, FORCE watermark -->
-    <div class="svc-card dark fade-in">
+    <!-- 02 Publicité — dark, full width -->
+    <div class="svc-card dark svc-full">
+      <div class="svc-dot-pattern"></div>
+      <div class="svc-white-dots"></div>
+      <div class="svc-glow"></div>
+      <div class="svc-shimmer"></div>
       <div class="svc-watermark">FORCE</div>
-      <div class="svc-card-inner">
-        <div>
+      <div class="card-accent-line"></div>
+      <div class="svc-col-left">
+        <div class="svc-card-icon-num">
           <div class="svc-card-icon">
-            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="white" stroke-width="1.5"/><path d="M8 12h8M12 8v8" stroke="white" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="white" stroke-width="1.5"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#E7C375" stroke-width="1.5"/><path d="M8 12h8M12 8v8" stroke="#E7C375" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="#E7C375" stroke-width="1.5"/></svg>
           </div>
-          <div class="svc-card-num">02</div>
-          <div class="svc-card-title">Publicité</div>
-          <p class="svc-card-desc">Meta Ads, TikTok Ads, Google Ads — on amène des clients directement dans votre salon, votre boutique, votre site.</p>
-          <div class="svc-card-tags">
-            <span class="svc-card-tag">Meta Ads</span>
-            <span class="svc-card-tag">Google Ads</span>
-            <span class="svc-card-tag">Retargeting</span>
-          </div>
+          <span class="svc-card-num">02</span>
         </div>
-        <div class="svc-card-right">
+        <div class="svc-card-title">Publicité</div>
+        <p class="svc-card-desc">Meta Ads, TikTok Ads, Google Ads — on amène des clients directement dans votre salon, votre boutique, votre site.</p>
+        <div class="svc-card-tags">
+          <span class="svc-card-tag">Meta Ads</span>
+          <span class="svc-card-tag">Google Ads</span>
+          <span class="svc-card-tag">Retargeting</span>
+        </div>
+      </div>
+      <div class="svc-col-right">
+        <div>
           <span class="svc-card-metric">5.2x</span>
           <span class="svc-card-metric-label">ROAS moyen</span>
         </div>
       </div>
     </div>
 
-    </div><!-- end 01+02 row -->
-
-    <!-- 03 + 04 — two cards side by side -->
-    <div class="svc-row-2">
-
-      <!-- 03 Contenu — light -->
-      <div class="svc-card light fade-in">
-        <div class="svc-card-inner">
-          <div>
-            <div class="svc-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#0c0a09" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-            </div>
-            <div class="svc-card-num">03</div>
-            <div class="svc-card-title">Contenu</div>
-            <p class="svc-card-desc">Vidéos, photos, Reels, TikToks — du contenu pro qui arrête le scroll et attire de nouveaux clients.</p>
-            <div class="svc-card-tags">
-              <span class="svc-card-tag">UGC</span>
-              <span class="svc-card-tag">Reels</span>
-              <span class="svc-card-tag">Production</span>
-            </div>
-            <span class="svc-card-metric" style="margin-top:20px; display:block;">+1Md</span>
-            <span class="svc-card-metric-label" style="color:var(--muted);">Vues générées</span>
-            <div class="svc-img-grid">
-              <img src="https://www.prime-agence.fr/images/contenu/tiktok.png" alt="TikTok"/>
-              <img src="https://www.prime-agence.fr/images/contenu/instagram.png" alt="Instagram"/>
-              <img src="https://www.prime-agence.fr/images/contenu/youtube.jpg" alt="YouTube"/>
-              <img src="https://www.prime-agence.fr/images/contenu/ugc.jpeg" alt="UGC"/>
-              <img src="https://www.prime-agence.fr/images/contenu/reels.jpg" alt="Reels"/>
-              <img src="https://www.prime-agence.fr/images/contenu/shorts.png" alt="Shorts"/>
-            </div>
+    <!-- 03 Contenu — light, half -->
+    <div class="svc-card light svc-half">
+      <div class="svc-dot-pattern"></div>
+      <div class="card-accent-line"></div>
+      <div class="svc-col-left">
+        <div class="svc-card-icon-num">
+          <div class="svc-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0c0a09" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
           </div>
+          <span class="svc-card-num">03</span>
+        </div>
+        <div class="svc-card-title">Contenu</div>
+        <p class="svc-card-desc">Vidéos, photos, Reels, TikToks — du contenu pro qui arrête le scroll et attire de nouveaux clients.</p>
+        <div class="svc-card-tags">
+          <span class="svc-card-tag">UGC</span>
+          <span class="svc-card-tag">Reels</span>
+          <span class="svc-card-tag">Production</span>
+        </div>
+        <span class="svc-card-metric" style="margin-top:20px; display:block;">+1Md</span>
+        <span class="svc-card-metric-label">Vues générées</span>
+        <div class="svc-img-grid">
+          <img src="https://www.prime-agence.fr/images/contenu/tiktok.png" alt="TikTok"/>
+          <img src="https://www.prime-agence.fr/images/contenu/instagram.png" alt="Instagram"/>
+          <img src="https://www.prime-agence.fr/images/contenu/youtube.jpg" alt="YouTube"/>
+          <img src="https://www.prime-agence.fr/images/contenu/ugc.jpeg" alt="UGC"/>
+          <img src="https://www.prime-agence.fr/images/contenu/reels.jpg" alt="Reels"/>
+          <img src="https://www.prime-agence.fr/images/contenu/shorts.png" alt="Shorts"/>
         </div>
       </div>
+    </div>
 
-      <!-- 04 Site & Marque — dark -->
-      <div class="svc-card dark fade-in">
-        <div class="svc-card-inner">
-          <div>
-            <div class="svc-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            </div>
-            <div class="svc-card-num">04</div>
-            <div class="svc-card-title">Site & Marque</div>
-            <p class="svc-card-desc">Votre site internet professionnel + identité visuelle complète. Vos clients vous trouvent et vous font confiance.</p>
-            <div class="svc-card-tags">
-              <span class="svc-card-tag">Web Design</span>
-              <span class="svc-card-tag">Branding</span>
-              <span class="svc-card-tag">SEO Local</span>
-            </div>
-            <span class="svc-card-metric" style="margin-top:20px; display:block; color:white;">+180%</span>
-            <span class="svc-card-metric-label" style="color:rgba(255,255,255,0.4);">Leads en plus</span>
-            <div class="svc-img-grid">
-              <img src="https://www.prime-agence.fr/images/tech/shopify.png" alt="Shopify"/>
-              <img src="https://www.prime-agence.fr/images/tech/wordpress.png" alt="WordPress"/>
-              <img src="https://www.prime-agence.fr/images/tech/react.png" alt="React"/>
-              <img src="https://www.prime-agence.fr/images/tech/html.png" alt="HTML5"/>
-              <img src="https://www.prime-agence.fr/images/tech/css.png" alt="CSS3"/>
-            </div>
+    <!-- 04 Site & Marque — dark, half -->
+    <div class="svc-card dark svc-half">
+      <div class="svc-dot-pattern"></div>
+      <div class="svc-white-dots"></div>
+      <div class="svc-glow"></div>
+      <div class="svc-shimmer"></div>
+      <div class="card-accent-line"></div>
+      <div class="svc-col-left">
+        <div class="svc-card-icon-num">
+          <div class="svc-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E7C375" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
           </div>
+          <span class="svc-card-num">04</span>
+        </div>
+        <div class="svc-card-title">Site & Marque</div>
+        <p class="svc-card-desc">Votre site internet professionnel + identité visuelle complète. Vos clients vous trouvent et vous font confiance.</p>
+        <div class="svc-card-tags">
+          <span class="svc-card-tag">Web Design</span>
+          <span class="svc-card-tag">Branding</span>
+          <span class="svc-card-tag">SEO Local</span>
+        </div>
+        <span class="svc-card-metric" style="margin-top:20px; display:block;">+180%</span>
+        <span class="svc-card-metric-label">Leads en plus</span>
+        <div class="svc-img-grid">
+          <img src="https://www.prime-agence.fr/images/tech/shopify.png" alt="Shopify"/>
+          <img src="https://www.prime-agence.fr/images/tech/wordpress.png" alt="WordPress"/>
+          <img src="https://www.prime-agence.fr/images/tech/react.png" alt="React"/>
+          <img src="https://www.prime-agence.fr/images/tech/html.png" alt="HTML5"/>
+          <img src="https://www.prime-agence.fr/images/tech/css.png" alt="CSS3"/>
         </div>
       </div>
-
     </div>
 
     <!-- 05 Influence & UGC — light, full width -->
-    <div class="svc-card light fade-in">
-      <div class="svc-card-inner">
-        <div>
+    <div class="svc-card light svc-full">
+      <div class="svc-dot-pattern"></div>
+      <div class="card-accent-line"></div>
+      <div class="svc-col-left">
+        <div class="svc-card-icon-num">
           <div class="svc-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0c0a09" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0c0a09" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <div class="svc-card-num">05</div>
-          <div class="svc-card-title">Influence & UGC</div>
-          <p class="svc-card-desc">On connecte votre marque avec les bons créateurs. Contenu authentique qui convertit, partenariats qui font parler.</p>
-          <div class="svc-card-tags">
-            <span class="svc-card-tag">Influenceurs</span>
-            <span class="svc-card-tag">UGC</span>
-            <span class="svc-card-tag">Collaborations</span>
-          </div>
+          <span class="svc-card-num">05</span>
         </div>
-        <div class="svc-card-right">
+        <div class="svc-card-title">Influence & UGC</div>
+        <p class="svc-card-desc">On connecte votre marque avec les bons créateurs. Contenu authentique qui convertit, partenariats qui font parler.</p>
+        <div class="svc-card-tags">
+          <span class="svc-card-tag">Influenceurs</span>
+          <span class="svc-card-tag">UGC</span>
+          <span class="svc-card-tag">Collaborations</span>
+        </div>
+      </div>
+      <div class="svc-col-right">
+        <div>
           <span class="svc-card-metric">x3</span>
           <span class="svc-card-metric-label">Taux de conversion</span>
+        </div>
+        <div class="svc-ugc-videos">
+          <div class="svc-ugc-video"><video src="https://www.prime-agence.fr/videos/ugc1.mp4" autoplay muted loop playsinline></video></div>
+          <div class="svc-ugc-video"><video src="https://www.prime-agence.fr/videos/ugc2.mp4" autoplay muted loop playsinline></video></div>
+          <div class="svc-ugc-video"><video src="https://www.prime-agence.fr/videos/ugc3.mp4" autoplay muted loop playsinline></video></div>
         </div>
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section-padding" id="portfolio">
+  <div class="portfolio-header fade-in">
+    <div class="badge">Portfolio</div>
+    <h2 class="section-title">Notre <span class="italic-accent">Portfolio</span></h2>
+  </div>
+
+  <!-- Tabs / Bulles -->
+  <div class="pf-tabs fade-in">
+    <button class="pf-tab active" data-tab="siteweb">Site Web</button>
+    <button class="pf-tab" data-tab="flyers">Flyers</button>
+    <button class="pf-tab" data-tab="visuels">Visuels</button>
+  </div>
+
+  <!-- Panel Site Web -->
+  <div class="pf-panel active" id="pf-siteweb">
+
+    <div class="pf-card-site">
+      <div class="pf-card-preview"><img src="pf-daniel-moquet.jpg" alt="Daniel Moquet"></div>
+      <div class="pf-card-body">
+        <span class="pf-card-cat">BTP — Aménagement</span>
+        <div class="pf-card-name">Daniel Moquet</div>
+        <a class="pf-card-link" href="https://wwwdaniel-moquetfr.vercel.app/" target="_blank">daniel-moquet.fr &nbsp;→</a>
+      </div>
+    </div>
+
+    <div class="pf-card-site">
+      <div class="pf-card-preview"><img src="pf-cabinet-sourire.jpg" alt="Cabinet Sourire"></div>
+      <div class="pf-card-body">
+        <span class="pf-card-cat">Dentaire</span>
+        <div class="pf-card-name">Cabinet Sourire</div>
+        <a class="pf-card-link" href="https://cabinet-sourire.vercel.app/" target="_blank">cabinet-sourire.vercel.app &nbsp;→</a>
+      </div>
+    </div>
+
+    <div class="pf-card-site">
+      <div class="pf-card-preview"><img src="pf-bistro-du-mont.jpg" alt="Bistro du Mont"></div>
+      <div class="pf-card-body">
+        <span class="pf-card-cat">Restauration</span>
+        <div class="pf-card-name">Bistro du Mont</div>
+        <a class="pf-card-link" href="https://bistrodumont.fr/" target="_blank">bistrodumont.fr &nbsp;→</a>
+      </div>
+    </div>
+
+    <div class="pf-card-site">
+      <div class="pf-card-preview"><img src="pf-buon-cibo.jpg" alt="Buon Cibo Pizza"></div>
+      <div class="pf-card-body">
+        <span class="pf-card-cat">Pizzeria</span>
+        <div class="pf-card-name">Buon Cibo Pizza</div>
+        <a class="pf-card-link" href="https://buon-cibo-pizza.vercel.app/" target="_blank">buon-cibo-pizza.vercel.app &nbsp;→</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Panel Flyers -->
+  <div class="pf-panel" id="pf-flyers">
+    <div class="pf-item"><span class="pf-item-placeholder">Réalisation à venir</span></div>
+    <div class="pf-item"><span class="pf-item-placeholder">Réalisation à venir</span></div>
+    <div class="pf-item"><span class="pf-item-placeholder">Réalisation à venir</span></div>
+  </div>
+
+  <!-- Panel Visuels -->
+  <div class="pf-panel" id="pf-visuels">
+    <div class="pf-item"><span class="pf-item-placeholder">Réalisation à venir</span></div>
+    <div class="pf-item"><span class="pf-item-placeholder">Réalisation à venir</span></div>
+    <div class="pf-item"><span class="pf-item-placeholder">Réalisation à venir</span></div>
   </div>
 </section>
 
@@ -1780,6 +2207,30 @@
 <div id="toast">✓ Demande envoyée — on vous recontacte bientôt</div>
 
 <script>
+  /* ── SERVICES SCROLL-IN ── */
+  const svcObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        svcObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.svc-card').forEach((card, i) => {
+    card.style.transitionDelay = (i * 0.08) + 's';
+    svcObserver.observe(card);
+  });
+
+  /* ── PORTFOLIO TABS ── */
+  document.querySelectorAll('.pf-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.pf-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.pf-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('pf-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+
   /* ── NAV SCROLL ── */
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => {
@@ -1806,6 +2257,7 @@
       const els = scene.querySelectorAll('.dp-el');
       scene.classList.add('active');
       typeLabel(scene.dataset.label);
+      document.querySelectorAll('.hv-proj-item').forEach((item, i) => item.classList.toggle('active', i === idx));
       els.forEach((el, i) => setTimeout(() => el.classList.add('drawn'), i * 110));
       const total = els.length * 110 + 1700;
       setTimeout(() => {
